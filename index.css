@@ -1,6 +1,4 @@
 body {
-    padding-left: 100px;
-    padding-right: 100px;
     display: block;
     font-family: Montserrat, sans-serif;
     font-size: 18px;
@@ -8,8 +6,26 @@ body {
     color: #666a70;
 }
 
+.padding{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.header{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
 .navlink{
     padding: 28px 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.navlink1{
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 60%;
     font-size: 16px;
     font-weight: 600;
 }
@@ -25,11 +41,22 @@ a {
 .image {
     width: 100%;
     border-radius: 15px;
+    padding-bottom: 100px;
+}
+
+.context{
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .image-2{
     width: 10%;
 }
+
+.image-3{
+    width: 13%;
+}
+
 
 h2 {
     color: #130b2c;
@@ -45,4 +72,76 @@ p {
     margin-bottom: 24px;
     line-height: 25px;
     font-weight: 300;
+}
+
+.eindwoord, .contact{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.eindwoord{
+    background-color: #fc2d75;
+    color: white;
+    padding: 2%;
+    width: 45%;
+    display: inline-block;
+}
+
+.contact{
+    background-color: grey;
+    color: #130b2c;
+    padding: 2%;
+    width: 45%;
+    display: inline-block;
+}
+
+.cc-form__input {
+    height: 60px;
+    margin-bottom: 24px;
+    padding: 10px 20px;
+    border: 1px #000;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #130b2c;
+    font-weight: 500;
+}
+
+.w-input, .w-select {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.w-select[multiple], textarea.w-input, textarea.w-select {
+    height: auto;
+}
+
+.cc-form__input {
+    height: 60px;
+    margin-bottom: 24px;
+    padding: 10px 20px;
+    border: 1px #000;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #130b2c;
+    font-weight: 500;
+}
+.w-input, .w-select {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
