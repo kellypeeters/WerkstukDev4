@@ -1,0 +1,48 @@
+body {
+    padding-left: 100px;
+    padding-right: 100px;
+    display: block;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #666a70;
+}
+
+.navlink{
+    padding: 28px 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+a {
+    font-family: Montserrat, sans-serif;
+    color: #130b2c;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration: none;
+}
+
+.image {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.image-2{
+    width: 10%;
+}
+
+h2 {
+    color: #130b2c;
+    font-size: 34px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    margin-bottom: 24px;
+    margin-top: 0;
+    letter-spacing: -.03em;
+}
+
+p {
+    margin-bottom: 24px;
+    line-height: 25px;
+    font-weight: 300;
+}
