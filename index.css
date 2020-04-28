@@ -6,18 +6,18 @@ body {
     color: #666a70;
 }
 
-.padding{
+.padding {
     padding-left: 100px;
     padding-right: 100px;
 }
 
-.padding2{
+.padding2 {
     padding-top: 100px;
     padding-left: 300px;
     padding-right: 300px;
 }
 
-h1{
+h1 {
     font-size: 58px;
     color: #130b2c;
     font-weight: 800;
@@ -25,19 +25,19 @@ h1{
     margin-bottom: 70px;
 }
 
-.header{
+.header {
     padding-top: 20px;
     padding-bottom: 40px;
 }
 
-.navlink{
+.navlink {
     text-align: right;
     font-size: 16px;
     font-weight: 600;
     padding: 28px 24px;
 }
 
-.header{
+.header {
     background-color: white;
     overflow: hidden;
     position: fixed;
@@ -47,7 +47,7 @@ h1{
     padding-bottom: 0;
 }
 
-.navlink1{
+.navlink1 {
     text-align: left;
     padding-left: 150px;
     padding-right: 50%;
@@ -67,9 +67,10 @@ a {
     text-align: center;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
     color: #fc2d75;
-  }
+}
 
 .image {
     padding-top: 100px;
@@ -77,20 +78,20 @@ a:hover, a:active {
     padding-bottom: 100px;
 }
 
-.context{
+.context {
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.sponsor{
+.sponsor {
     margin-left: 20%;
 }
 
-.image-2{
+.image-2 {
     width: 100%;
 }
 
-.image-3{
+.image-3 {
     width: 13%;
 }
 
@@ -111,16 +112,17 @@ p {
     font-weight: 300;
 }
 
-.eindwoord, .contact{
+.eindwoord,
+.contact {
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
-strong{
+strong {
     color: white;
 }
 
-.eindwoord{
+.eindwoord {
     background-color: #fc2d75;
     color: white;
     padding: 2%;
@@ -130,7 +132,8 @@ strong{
     padding-bottom: 250px;
 }
 
-.contact{
+.contact {
+    margin-top: 5%;
     background-color: #e8edf4;
     padding: 2%;
     width: 45%;
@@ -171,7 +174,8 @@ label {
     font-weight: 500;
 }
 
-.w-input, .w-select {
+.w-input,
+.w-select {
     display: block;
     width: 80%;
     height: 38px;
@@ -184,6 +188,29 @@ label {
     border: 1px solid #ccc;
 }
 
-.w-select[multiple], textarea.w-input, textarea.w-select {
+.w-select[multiple],
+textarea.w-input,
+textarea.w-select {
     height: auto;
+}
+
+h5{
+    color: #130b2c;
+}
+
+.doelgroepbutton {
+    background-color: rgb(232, 237, 244);
+    border: 2px solid rgb(232, 237, 244);
+    color: #130b2c;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 10px;
+    font-family: Montserrat, sans-serif;
+}
+
+.doelgroepbutton-active{
+    background-color: white;
+    border: 2px solid #fc2d75;
+    color: #fc2d75;
 }
