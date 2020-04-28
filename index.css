@@ -11,23 +11,49 @@ body {
     padding-right: 100px;
 }
 
+.padding2{
+    padding-top: 100px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+h1{
+    font-size: 58px;
+    color: #130b2c;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    margin-bottom: 70px;
+}
+
 .header{
     padding-top: 20px;
     padding-bottom: 40px;
 }
 
 .navlink{
-    padding: 28px 24px;
+    text-align: right;
     font-size: 16px;
     font-weight: 600;
+    padding: 28px 24px;
+}
+
+.header{
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 0;
 }
 
 .navlink1{
     text-align: left;
-    padding-left: 0px;
-    padding-right: 60%;
+    padding-left: 150px;
+    padding-right: 50%;
     font-size: 16px;
     font-weight: 600;
+    padding-top: 28px;
 }
 
 a {
@@ -36,11 +62,18 @@ a {
     font-weight: 400;
     text-decoration: underline;
     text-decoration: none;
+    float: left;
+    display: block;
+    text-align: center;
 }
 
+a:hover, a:active {
+    color: #fc2d75;
+  }
+
 .image {
+    padding-top: 100px;
     width: 100%;
-    border-radius: 15px;
     padding-bottom: 100px;
 }
 
@@ -49,8 +82,12 @@ a {
     padding-right: 20%;
 }
 
+.sponsor{
+    margin-left: 20%;
+}
+
 .image-2{
-    width: 10%;
+    width: 100%;
 }
 
 .image-3{
