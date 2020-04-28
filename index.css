@@ -83,10 +83,6 @@ a:active {
     padding-right: 20%;
 }
 
-.sponsor {
-    margin-left: 20%;
-}
-
 .image-2 {
     width: 100%;
 }
@@ -123,6 +119,7 @@ strong {
 }
 
 .eindwoord {
+    margin-top: 5%;
     background-color: #fc2d75;
     color: white;
     padding: 2%;
@@ -130,16 +127,17 @@ strong {
     display: inline-block;
     padding-top: 50px;
     padding-bottom: 250px;
+    float: left;
 }
 
 .contact {
     margin-top: 5%;
     background-color: #e8edf4;
     padding: 2%;
-    width: 45%;
+    width: 47%;
     display: inline-block;
     padding-top: 50px;
-    padding-bottom: 200px;
+    padding-bottom: 148px;
 }
 
 label {
@@ -161,6 +159,12 @@ label {
     border-radius: 10px;
     font-size: 15px;
     font-weight: 600;
+    border-radius: 15px;
+    border-width: 0;
+}
+
+.submit-button-2:hover {
+    box-shadow: 2px 2px grey;
 }
 
 .cc-form__input {
@@ -194,7 +198,7 @@ textarea.w-select {
     height: auto;
 }
 
-h5{
+h5 {
     color: #130b2c;
 }
 
@@ -209,8 +213,15 @@ h5{
     font-family: Montserrat, sans-serif;
 }
 
-.doelgroepbutton-active{
+.doelgroepbutton-active {
     background-color: white;
     border: 2px solid #fc2d75;
     color: #fc2d75;
+}
+
+.sponsor {
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    background-color: #e8edf4;
 }
