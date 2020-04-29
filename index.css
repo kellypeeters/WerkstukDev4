@@ -44,13 +44,19 @@ h1 {
 }
 
 h2 {
+    font-family: Montserrat, sans-serif;
     color: #130b2c;
     font-size: 34px;
-    font-family: Montserrat, sans-serif;
     font-weight: 800;
     margin-bottom: 24px;
     margin-top: 0;
     letter-spacing: -.03em;
+}
+
+h3{
+    font-family: Montserrat, sans-serif;
+    color: #130b2c;
+    font-size: 20px;
 }
 
 h5 {
@@ -58,9 +64,10 @@ h5 {
 }
 
 p {
+    font-family: Montserrat, sans-serif;
     margin-bottom: 24px;
     line-height: 25px;
-    font-weight: 300;
+    font-weight: 300; 
 }
 
 .overlay {
@@ -162,22 +169,33 @@ a:active {
 /************************
 *        Video's        *
 ************************/
-.content {
-    display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 50px;
-    grid-template-columns:
-        300px 300px 300px auto;
-    grid-template-rows:
-    300px 300px 300px auto;
-    justify-content: start;
-}
 
 .thumbnail {
-    display: flex;
-    width: 300px;
-    height: 200px;
+    width: 390px;
+    height: 300px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: solid 5px #fc2d75;
+}
+
+.gegevensbutton {
+    height: 500px;
+    width: 400px;
+    background-color: rgb(232, 237, 244);
+    border: none;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.duur{
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 24px;
+    line-height: 10px;
+    font-weight: 300; 
+    font-size: 18px;
+    width: 230px;
     padding: 36px;
+    padding-left: 80px;
 }
 
 /************************
