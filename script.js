@@ -37,7 +37,7 @@ $(document).ready(function () {
     //Get de genre van de video's van de json file 
     $.getJSON("entries.json", function (data) {
         console.log(data);
-        //Een loop zodat dit voor elke array kan gedaan worden
+        //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
             //De genre wordt in een button zichtbaar op de pagina
 
@@ -60,10 +60,20 @@ $(document).ready(function () {
 
     //Get de video's van de json file 
     $.getJSON("entries.json", function (data) {
-        //Een loop zodat dit voor elke array kan gedaan worden
+        //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
             //De thumbnails verschijnen op de pagina
             $('.content').prepend(`<img src="${data.items[i].thumbnail.url}" class='thumbnail' />`)
+        }
+    });
+
+    
+    //Get de naam van de video's van de json file 
+    $.getJSON("entries.json", function (data) {
+        //Een loop zodat dit voor elk element kan gedaan worden
+        for (let i in data.items) {
+            //De naam wordt zichtbaar op de pagina
+            $('.gegevens').append(`<button class = 'gegevensbutton'> <p> ${data.items[i].name} </p> <p> ${data.items[i].excerpt} </p> <p> ${data.items[i]["video-length"]} </p>  </button>`);
         }
     });
 });
