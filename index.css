@@ -3,22 +3,19 @@
 ************************/
 
 body {
+    background-color: white;
     display: block;
     font-family: Montserrat, sans-serif;
     font-size: 18px;
     font-weight: 500;
     color: #666a70;
+    margin: 0;
 }
 
 .padding {
+    background-color: white;
     padding-left: 100px;
     padding-right: 100px;
-}
-
-.padding2 {
-    padding-top: 100px;
-    padding-left: 300px;
-    padding-right: 300px;
 }
 
 h1 {
@@ -47,6 +44,11 @@ p {
     margin-bottom: 24px;
     line-height: 25px;
     font-weight: 300;
+}
+
+.overlay {
+    position: relative;
+    z-index: 2;
 }
 
 /************************
@@ -102,16 +104,40 @@ a:active {
 /************************
 *       Inleiding       *
 ************************/
- 
+
 .image {
-    padding-top: 100px;
+    margin-top: 100px;
     width: 100%;
-    padding-bottom: 100px;
+    margin-bottom: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .context {
     padding-left: 20%;
     padding-right: 20%;
+}
+
+/************************
+*       Categorie       *
+************************/
+
+.doelgroepbutton {
+    background-color: rgb(232, 237, 244);
+    border: 2px solid rgb(232, 237, 244);
+    color: #130b2c;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 10px;
+    font-family: Montserrat, sans-serif;
+}
+
+.doelgroepbutton-active {
+    background-color: white;
+    border: 2px solid #fc2d75;
+    color: #fc2d75;
 }
 
 /************************
@@ -129,7 +155,6 @@ strong {
 }
 
 .eindwoord {
-    margin-top: 5%;
     background-color: #fc2d75;
     color: white;
     padding: 2%;
@@ -138,10 +163,10 @@ strong {
     padding-top: 50px;
     padding-bottom: 250px;
     float: left;
+    margin-bottom: 20%;
 }
 
 .contact {
-    margin-top: 5%;
     background-color: #e8edf4;
     padding: 2%;
     width: 47%;
@@ -208,25 +233,11 @@ textarea.w-select {
     height: auto;
 }
 
-/************************
-*       Categorie       *
-************************/
-
-.doelgroepbutton {
-    background-color: rgb(232, 237, 244);
-    border: 2px solid rgb(232, 237, 244);
-    color: #130b2c;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-size: 10px;
-    padding: 10px;
-    font-family: Montserrat, sans-serif;
-}
-
-.doelgroepbutton-active {
+.background {
     background-color: white;
-    border: 2px solid #fc2d75;
-    color: #fc2d75;
+    padding: 30px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin-bottom: 20%;
 }
 
 /************************
@@ -234,8 +245,15 @@ textarea.w-select {
 ************************/
 
 .sponsor {
-    width: 86.7%;
-    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    z-index: -1;
+    padding-bottom: 40px;
+    width: 87%;
+    padding-top: 150px;
     padding-bottom: 40px;
     padding-left: 100px;
     padding-right: 100px;

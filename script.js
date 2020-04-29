@@ -26,8 +26,10 @@ $(document).ready(function () {
             });*/
 
      //Get de data van de video's van de json file naar de homepagina
-     /*$.getJSON( "entries.json", function( data ) {
-        var items = [];
+     $.getJSON( "entries.json", function(data) {
+        console.log(data);
+     });
+        /*var items = [];
         $.each( data, function( key, val ) {
           items.push( "<li id='" + key + "'>" + val + "</li>" );
         });
