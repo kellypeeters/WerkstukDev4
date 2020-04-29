@@ -43,12 +43,12 @@ $(document).ready(function () {
 
             let array = data.items[i]["genre-v2"];
             let count = 0;
-                if (array == "circus") {
-                    count++;
+            if (array == "comedy") {
+                count++;
+                console.log(count);
+
+                $('.genre').append(`<button class = 'genrebutton'>  ${data.items[i]["genre-v2"] + count} </button>`);
             }
-            console.log(count);
-            
-            $('.genre').append(`<button class = 'genrebutton'>  ${data.items[i]["genre-v2"] + count} </button>`);
 
 
             // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
@@ -56,5 +56,14 @@ $(document).ready(function () {
                 $(this).toggleClass('genrebutton-active');
             });
         };
+    });
+
+    //Get de video's van de json file 
+    $.getJSON("entries.json", function (data) {
+        //Een loop zodat dit voor elke array kan gedaan worden
+        for (let i in data.items) {
+            //De thumbnails verschijnen op de pagina
+            $('.content').prepend(`<img src="${data.items[i].thumbnail.url}" class='thumbnail' />`)
+        }
     });
 });
