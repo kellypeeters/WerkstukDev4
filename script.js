@@ -23,7 +23,6 @@ $(document).ready(function () {
 
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
-        console.log(data);
         //Een loop zodat dit voor elke array kan gedaan worden
         for (let i in data.items) {
             //De category wordt in een button zichtbaar op de pagina
@@ -33,5 +32,29 @@ $(document).ready(function () {
                 $(this).toggleClass('doelgroepbutton-active');
             });
         }
+    });
+
+    //Get de genre van de video's van de json file 
+    $.getJSON("entries.json", function (data) {
+        console.log(data);
+        //Een loop zodat dit voor elke array kan gedaan worden
+        for (let i in data.items) {
+            //De genre wordt in een button zichtbaar op de pagina
+
+            let array = data.items[i]["genre-v2"];
+            let count = 0;
+                if (array == "circus") {
+                    count++;
+            }
+            console.log(count);
+            
+            $('.genre').append(`<button class = 'genrebutton'>  ${data.items[i]["genre-v2"] + count} </button>`);
+
+
+            // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
+            $('.genrebutton').on('click', function () {
+                $(this).toggleClass('genrebutton-active');
+            });
+        };
     });
 });

@@ -140,7 +140,8 @@ a:active {
 *       Categorie       *
 ************************/
 
-.doelgroepbutton {
+.doelgroepbutton,
+.genrebutton {
     background-color: rgb(232, 237, 244);
     border: 2px solid rgb(232, 237, 244);
     color: #130b2c;
@@ -151,7 +152,8 @@ a:active {
     font-family: Montserrat, sans-serif;
 }
 
-.doelgroepbutton-active {
+.doelgroepbutton-active,
+.genrebutton-active {
     background-color: white;
     border: 2px solid #fc2d75;
     color: #fc2d75;
