@@ -6,7 +6,8 @@ body {
     color: #666a70;
 }
 
-.padding {
+.padding,
+.sponsor {
     padding-left: 100px;
     padding-right: 100px;
 }
@@ -60,7 +61,6 @@ a {
     font-family: Montserrat, sans-serif;
     color: #130b2c;
     font-weight: 400;
-    text-decoration: underline;
     text-decoration: none;
     float: left;
     display: block;
@@ -224,4 +224,24 @@ h5 {
     padding-top: 100px;
     padding-bottom: 40px;
     background-color: #e8edf4;
+}
+
+p>a {
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.sponsors {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.sponsorImage {
+    margin-top: 2%;
+    margin-left: 28%;
+}
+
+.sponsorImage2 {
+    margin-left: 2%;
 }
