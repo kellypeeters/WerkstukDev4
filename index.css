@@ -1,3 +1,7 @@
+/************************
+*     Basis design      *
+************************/
+
 body {
     display: block;
     font-family: Montserrat, sans-serif;
@@ -6,8 +10,7 @@ body {
     color: #666a70;
 }
 
-.padding,
-.sponsor {
+.padding {
     padding-left: 100px;
     padding-right: 100px;
 }
@@ -25,6 +28,30 @@ h1 {
     letter-spacing: -.03em;
     margin-bottom: 70px;
 }
+
+h2 {
+    color: #130b2c;
+    font-size: 34px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    margin-bottom: 24px;
+    margin-top: 0;
+    letter-spacing: -.03em;
+}
+
+h5 {
+    color: #130b2c;
+}
+
+p {
+    margin-bottom: 24px;
+    line-height: 25px;
+    font-weight: 300;
+}
+
+/************************
+*       Navigatie       *
+************************/
 
 .header {
     padding-top: 20px;
@@ -72,6 +99,10 @@ a:active {
     color: #fc2d75;
 }
 
+/************************
+*       Inleiding       *
+************************/
+ 
 .image {
     padding-top: 100px;
     width: 100%;
@@ -83,30 +114,9 @@ a:active {
     padding-right: 20%;
 }
 
-.image-2 {
-    width: 100%;
-}
-
-.image-3 {
-    width: 13%;
-}
-
-
-h2 {
-    color: #130b2c;
-    font-size: 34px;
-    font-family: Montserrat, sans-serif;
-    font-weight: 800;
-    margin-bottom: 24px;
-    margin-top: 0;
-    letter-spacing: -.03em;
-}
-
-p {
-    margin-bottom: 24px;
-    line-height: 25px;
-    font-weight: 300;
-}
+/************************
+*       Formulier       *
+************************/
 
 .eindwoord,
 .contact {
@@ -198,9 +208,9 @@ textarea.w-select {
     height: auto;
 }
 
-h5 {
-    color: #130b2c;
-}
+/************************
+*       Categorie       *
+************************/
 
 .doelgroepbutton {
     background-color: rgb(232, 237, 244);
@@ -219,10 +229,16 @@ h5 {
     color: #fc2d75;
 }
 
+/************************
+*        Footer         *
+************************/
+
 .sponsor {
-    width: 100%;
+    width: 86.7%;
     padding-top: 100px;
     padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
     background-color: #e8edf4;
 }
 
