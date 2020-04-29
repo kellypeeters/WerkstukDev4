@@ -50,20 +50,38 @@ $(document).ready(function () {
                 $('.genre').append(`<button class = 'genrebutton'>  ${data.items[i]["genre-v2"] + count} </button>`);
             }
 
-
             // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
             $('.genrebutton').on('click', function () {
                 $(this).toggleClass('genrebutton-active');
             });
         };
     });
- 
+
     //Get de naam van de video's van de json file 
     $.getJSON("entries.json", function (data) {
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
-            //De naam wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class = 'gegevensbutton'> <img src="${data.items[i].thumbnail.url}" class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> ${data.items[i]["video-length"]} </p>  </button>`);
+            //De belangrijkste gegevens wordt zichtbaar op de pagina
+            $('.gegevens').append(`<button class='gegevensbutton'> <img src="${data.items[i].thumbnail.url}"
+            class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
+            ${data.items[i]["video-length"]} </p> </button>`);
+
+            $('.gegevensbutton').click(function () {
+                let videoIndex = ($(this).index());
+
+                //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
+                //$(location).attr('href', 'video.html')
+
+                //De video wordt getoond
+                // $(".videosbekijken").append(`<video src="${data.items[videoIndex]['link-to-video']}" />`);
+
+                $('.gegevensbutton').append(`<div><p>${data.items[videoIndex].excerpt}</p><h2>${data.items[videoIndex].name}</h2><p> 
+            ${data.items[videoIndex]["video-notes"]}</p><p>${data.items[videoIndex]["social-share-description"]}</p></div>`);
+
+               // $('.extraGegevens').append(`<div><h5>${data.items[videoIndex].genre}</h5><h5> ${data.items[videoIndex]["video-length"]}</h5><h5> 
+            // ${data.items[i]["key-takeaways"]["taal"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
+            console.log(data.items[videoIndex].name);
+            });
         }
     });
 });
