@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    //Eenvoudige manier om de style van de filters van de video's te veranderen
-    $('.doelgroepbutton').on('click', function () {
-        $(this).toggleClass('doelgroepbutton-active');
-    });
 
     //Formulier succesvol verzonden
     /*$("#contact-form").on('submit',function(event) {
@@ -25,18 +21,17 @@ $(document).ready(function () {
 
             });*/
 
-     //Get de data van de video's van de json file naar de homepagina
-     $.getJSON( "entries.json", function(data) {
+    //Get de category van de video's van de json file 
+    $.getJSON("entries.json", function (data) {
         console.log(data);
-     });
-        /*var items = [];
-        $.each( data, function( key, val ) {
-          items.push( "<li id='" + key + "'>" + val + "</li>" );
-        });
-       
-        $( "<ul/>", {
-          "class": "my-new-list",
-          html: items.join( "" )
-        }).appendTo( ".video's" );
-      });*/
+        //Een loop zodat dit voor elke array kan gedaan worden
+        for (let i in data.items) {
+            //De category wordt in een button zichtbaar op de pagina
+            $('.doelgroep').append(`<button class = 'doelgroepbutton'>  ${data.items[i].category} </button>`);
+            // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
+            $('.doelgroepbutton').on('click', function () {
+                $(this).toggleClass('doelgroepbutton-active');
+            });
+        }
+    });
 });
