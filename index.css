@@ -18,6 +18,23 @@ body {
     padding-right: 100px;
 }
 
+.padding2 {
+    padding-right: 200px;
+    padding-top: 100px;
+    padding-left: 250px;
+    background-color: white;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin-bottom: 20%;
+    padding-bottom: 100px;
+}
+
+.overlay2 {
+    background-color: white;
+    margin-bottom: 5%;
+    position: relative;
+    z-index: 2;
+}
+
 h1 {
     font-size: 58px;
     color: #130b2c;
