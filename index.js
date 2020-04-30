@@ -23,7 +23,6 @@ let settings = {
   });
 
 
-
 var port = 8000;
 var serverUrl = "127.0.0.1";
 

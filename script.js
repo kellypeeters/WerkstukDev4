@@ -62,25 +62,42 @@ $(document).ready(function () {
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
             //De belangrijkste gegevens wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class='gegevensbutton'> <img src="${data.items[i].thumbnail.url}"
+            $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]} </p> </button>`);
 
-            $('.gegevensbutton').click(function () {
+            $('.gegevensbutton').click(function (e) {
+                e.preventDefault();
                 let videoIndex = ($(this).index());
 
+                console.log(videoIndex);
+                //Fout bij het ophalen van informatie door cors
+                $.ajax({
+                    url:"http://127.0.0.1:5500/index.html#video",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "data.json",
+                    data: JSON.stringify(videoIndex),
+                    success: function (data) {
+                        alert(data);
+                    },
+                    failure: function (errMsg) {
+                        alert(errMsg);
+                    }
+                }); 
+
                 //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
-                //$(location).attr('href', 'video.html')
+                // $(location).attr('href', 'video.html');
+                // console.log(videoIndex);
 
                 //De video wordt getoond
                 // $(".videosbekijken").append(`<video src="${data.items[videoIndex]['link-to-video']}" />`);
 
-                $('.gegevensbutton').append(`<div><p>${data.items[videoIndex].excerpt}</p><h2>${data.items[videoIndex].name}</h2><p> 
-            ${data.items[videoIndex]["video-notes"]}</p><p>${data.items[videoIndex]["social-share-description"]}</p></div>`);
+                // $('.informatie').append(`<div><p>${data.items[videoIndex].excerpt}</p><h2>${data.items[videoIndex].name}</h2><p> 
+                //${data.items[videoIndex]["video-notes"]}</p><p>${data.items[videoIndex]["social-share-description"]}</p></div>`);
 
-               // $('.extraGegevens').append(`<div><h5>${data.items[videoIndex].genre}</h5><h5> ${data.items[videoIndex]["video-length"]}</h5><h5> 
-            // ${data.items[i]["key-takeaways"]["taal"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
-            console.log(data.items[videoIndex].name);
+                // $('.extraGegevens').append(`<div><h5>${data.items[videoIndex].genre}</h5><h5> ${data.items[videoIndex]["video-length"]}</h5><h5> 
+                // ${data.items[i]["key-takeaways"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
             });
         }
     });
