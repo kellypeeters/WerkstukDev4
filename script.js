@@ -44,10 +44,10 @@ $(document).ready(function () {
         /* Door de togleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
         $('.volwassenenbutton').on('click', function () {
-            $(this).toggleClass('volwassenenbutton-active');
+            $(this).toggleClass('genrebutton-active');
         });
         $('.familiebutton').on('click', function () {
-            $(this).toggleClass('familiebutton-active');
+            $(this).toggleClass('genrebutton-active');
         });
     });
 
@@ -97,12 +97,27 @@ $(document).ready(function () {
             "</button><button class = 'genrebutton'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton'>" + "concert (" + concert + ")" +
             "</button><button class = 'genrebutton'>" + "multidiciplinair (" + multidiciplinair + ")" + "</button><button class = 'genrebutton'>" + "muziektheater (" + muziektheater + ")" +
             "</button><button class = 'genrebutton'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton'>" + "circus (" + circus + ")" +
-            "</button><button class = 'genrebutton'>" + "opera (" + opera + ")" + "</button>");
+            "</button><button class = 'genrebutton'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button>");
 
         /* Door de togleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
         $('.genrebutton').on('click', function () {
             $(this).toggleClass('genrebutton-active');
+        });
+
+        $('.filtersWissen').hide();
+
+        //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
+        $('.genrebutton, .volwassenenbutton, .familiebutton').on('click', function () {
+            $('.filtersWissen').show(); 
+        });
+
+        //Wanneer er op de filters wissen button wordt geklikt worden alle geselecteerde filters gedeselecteerd
+        $('.filtersWissen').on('click', function () {
+            $('button').removeClass('genrebutton-active');
+            $('.filtersWissen').on('click', function () {
+                $('.filtersWissen').hide();
+            });
         });
     });
 
