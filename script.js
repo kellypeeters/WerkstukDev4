@@ -24,14 +24,33 @@ $(document).ready(function () {
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
         //Een loop zodat dit voor elke array kan gedaan worden
-        for (let i in data.items) {
-            //De category wordt in een button zichtbaar op de pagina
-            $('.doelgroep').append(`<button class = 'doelgroepbutton'>  ${data.items[i].category} </button>`);
-            // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
-            $('.doelgroepbutton').on('click', function () {
-                $(this).toggleClass('doelgroepbutton-active');
-            });
+        let number = 0;
+        let volwassenen = 0;
+
+        //De category wordt in een button zichtbaar op de pagina
+
+        //Door deze loop wordt er voor elke index van de array nagekeken of de doelgroep familie of volwassenen is
+        for (j = 0; j < 100; j++) {
+            if (data.items[j].category == "volwassenen") {
+                number++;
+            } else {
+                volwassenen++;
+            }
         }
+        console.log(number, volwassenen);
+        /*Er verschijnen 2 buttons in de class doelgroep, waardoor de gebruiker kan kiezen welke doelgroep hij wil bekijken.
+        Het aantal familie/ volwassenen categorie wordt achteraan de button bijgezet,zodat de gebruiker weet hoeveel video's er zijn
+        van een doelgroep */
+        $('.doelgroep').append("<button class = 'volwassenenbutton'>" + "volwassenen (" + volwassenen + ")" +
+            "</button><button class = 'familiebutton'>" + "familie (" + number + ")" + "</button>");
+        /* Door de togleclass functie wordt de class veranderd wanneer ik op de button klik
+        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
+        $('.volwassenenbutton').on('click', function () {
+            $(this).toggleClass('volwassenenbutton-active');
+        });
+        $('.familiebutton').on('click', function () {
+            $(this).toggleClass('familiebutton-active');
+        });
     });
 
     //Get de genre van de video's van de json file 
@@ -73,7 +92,7 @@ $(document).ready(function () {
                 console.log(videoIndex);
                 //Fout bij het ophalen van informatie door cors
                 $.ajax({
-                    url:"http://127.0.0.1:5500/index.html#video",
+                    url: "http://127.0.0.1:5500/index.html#video",
                     type: "POST",
                     dataType: "json",
                     contentType: "data.json",
@@ -84,7 +103,7 @@ $(document).ready(function () {
                     failure: function (errMsg) {
                         alert(errMsg);
                     }
-                }); 
+                });
 
                 //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
                 // $(location).attr('href', 'video.html');
