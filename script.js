@@ -23,11 +23,10 @@ $(document).ready(function () {
 
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
-        //Een loop zodat dit voor elke array kan gedaan worden
+
+        //Variabelen initialiseren zodat deze gebruikt kunnen worden in de loop
         let number = 0;
         let volwassenen = 0;
-
-        //De category wordt in een button zichtbaar op de pagina
 
         //Door deze loop wordt er voor elke index van de array nagekeken of de doelgroep familie of volwassenen is
         for (j = 0; j < 100; j++) {
@@ -37,7 +36,6 @@ $(document).ready(function () {
                 volwassenen++;
             }
         }
-        console.log(number, volwassenen);
         /*Er verschijnen 2 buttons in de class doelgroep, waardoor de gebruiker kan kiezen welke doelgroep hij wil bekijken.
         Het aantal familie/ volwassenen categorie wordt achteraan de button bijgezet,zodat de gebruiker weet hoeveel video's er zijn
         van een doelgroep */
@@ -55,25 +53,57 @@ $(document).ready(function () {
 
     //Get de genre van de video's van de json file 
     $.getJSON("entries.json", function (data) {
-        console.log(data);
-        //Een loop zodat dit voor elk element kan gedaan worden
-        for (let i in data.items) {
-            //De genre wordt in een button zichtbaar op de pagina
 
-            let array = data.items[i]["genre-v2"];
-            let count = 0;
-            if (array == "comedy") {
-                count++;
-                console.log(count);
+        //Variabelen initialiseren zodat deze gebruikt kunnen worden in de loop
+        let dans = 0;
+        let comedy = 0;
+        let theater = 0;
+        let concert = 0;
+        let multidiciplinair = 0;
+        let literatuur = 0;
+        let muziektheater = 0;
+        let figurentheater = 0;
+        let circus = 0;
+        let opera = 0;
 
-                $('.genre').append(`<button class = 'genrebutton'>  ${data.items[i]["genre-v2"] + count} </button>`);
+        //Een loop zodat kan nagekeken worden hoeveel verschillende video's per genre er zijn
+        for (j = 0; j < 100; j++) {
+            if (data.items[j]["genre-v2"] == "dans") {
+                dans++;
+            } else if (data.items[j]["genre-v2"] == "comedy") {
+                comedy++;
+            } else if (data.items[j]["genre-v2"] == "theater") {
+                theater++;
+            } else if (data.items[j]["genre-v2"] == "concert") {
+                concert++;
+            } else if (data.items[j]["genre-v2"] == "multidiciplinair") {
+                multidiciplinair++;
+            } else if (data.items[j]["genre-v2"] == "literatuur") {
+                literatuur++;
+            } else if (data.items[j]["genre-v2"] == "muziektheater") {
+                muziektheater++;
+            } else if (data.items[j]["genre-v2"] == "figurentheater") {
+                figurentheater++;
+            } else if (data.items[j]["genre-v2"] == "circus") {
+                circus++;
+            } else if (data.items[j]["genre-v2"] == "opera") {
+                opera++;
             }
+        }
 
-            // Hierdoor wordt de style van de filters van de video's veranderd op een efficiënte manier
-            $('.genrebutton').on('click', function () {
-                $(this).toggleClass('genrebutton-active');
-            });
-        };
+        //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
+        $('.genre').append("<button class = 'genrebutton'>" + "dans (" + dans + ")" +
+            "</button><button class = 'genrebutton'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton'>" + "theater (" + theater + ")" +
+            "</button><button class = 'genrebutton'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton'>" + "concert (" + concert + ")" +
+            "</button><button class = 'genrebutton'>" + "multidiciplinair (" + multidiciplinair + ")" + "</button><button class = 'genrebutton'>" + "muziektheater (" + muziektheater + ")" +
+            "</button><button class = 'genrebutton'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton'>" + "circus (" + circus + ")" +
+            "</button><button class = 'genrebutton'>" + "opera (" + opera + ")" + "</button>");
+
+        /* Door de togleclass functie wordt de class veranderd wanneer ik op de button klik
+        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
+        $('.genrebutton').on('click', function () {
+            $(this).toggleClass('genrebutton-active');
+        });
     });
 
     //Get de naam van de video's van de json file 
