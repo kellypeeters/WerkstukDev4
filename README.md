@@ -17,3 +17,9 @@ https://stackoverflow.com/questions/21446357/javascript-filter-books-by-genre/21
 
 Filteren van data (ga ik misschien gebruiken)
 https://www.w3schools.com/howto/howto_js_filter_elements.asp
+
+Looping door een array
+https://stackoverflow.com/questions/40941260/looping-through-array-in-if-statement-to-check-if-all-values-pass
+
+Pagination
+https://stackoverflow.com/questions/31368999/prev-and-next-button-pagination

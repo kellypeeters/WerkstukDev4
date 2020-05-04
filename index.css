@@ -311,6 +311,45 @@ textarea.w-select {
 }
 
 /************************
+*      Pagination       *
+************************/
+
+#pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    list-style: none;
+}
+
+.pages_1 {
+    height: 20px;
+    width: 20px;
+    padding: 5px;
+    background-color: #fc2d75;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50px;
+    border-width: 0;
+    margin-bottom: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.pages_1:hover {
+    color: #aaaaaa;
+    box-shadow: 1px 1px #aaaaaa;
+}
+
+.current {
+    background-color: #aaaaaa;
+    box-shadow: 1px 1px #808080;
+
+}
+
+/************************
 *        Footer         *
 ************************/
 

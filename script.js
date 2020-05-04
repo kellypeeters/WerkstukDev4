@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //Formulier succesvol verzonden
+    //Formulier succesvol verzenden
     /*$("#contact-form").on('submit',function(event) {
                 event.preventDefault(); // to prevent default page reloading
                 var dataString = $(this).serialize(); // to get the form data
@@ -92,7 +92,7 @@ $(document).ready(function () {
         }
 
         //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
-        $('.genre').append("<button class = 'genrebutton'>" + "dans (" + dans + ")" +
+        $('.genre').append("<button id ='dansId' class = 'genrebutton'>" + "dans (" + dans + ")" +
             "</button><button class = 'genrebutton'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton'>" + "theater (" + theater + ")" +
             "</button><button class = 'genrebutton'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton'>" + "concert (" + concert + ")" +
             "</button><button class = 'genrebutton'>" + "multidiciplinair (" + multidiciplinair + ")" + "</button><button class = 'genrebutton'>" + "muziektheater (" + muziektheater + ")" +
@@ -105,11 +105,41 @@ $(document).ready(function () {
             $(this).toggleClass('genrebutton-active');
         });
 
+        /*   $.getJSON("entries.json", function (data) {
+               for (let j in data.items) {
+                   $('#dansId').on('click', function () {
+                       if ('.gegevensbutton' == data.items[j]["genre-v2"] == "dans") {
+                           return false;
+                       }
+                   })
+               }
+           }); */
+
+        //Wanneer er op de filter dans wordt geklikt gaan de buttons die niet tot deze categorie behoren hiden
+        /* $('.gegevensbutton').click(function () {
+             //Alle video's die als genre niet dans hebben worden gehide  
+             for (let j = 0; j < 100; j++) {
+                 if ('.gegevensbutton' !== data.items[j]["genre-v2"] == "dans") {
+                     $(this).hide();
+                     console.log(this);
+                 }
+             }
+         });*/
+
+        /*  $.getJSON("entries.json", function (data) {
+              for (let j in data.items) {
+                  console.log('.gegevensbutton' == data.items[j]["genre-v2"] == "dans");
+                  //  if (this == data.items[j]["genre-v2"] == "dans") {
+                  //    $(this).hide();
+              };
+          }); */
+
+
         $('.filtersWissen').hide();
 
         //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
         $('.genrebutton, .volwassenenbutton, .familiebutton').on('click', function () {
-            $('.filtersWissen').show(); 
+            $('.filtersWissen').show();
         });
 
         //Wanneer er op de filters wissen button wordt geklikt worden alle geselecteerde filters gedeselecteerd
@@ -125,6 +155,7 @@ $(document).ready(function () {
     $.getJSON("entries.json", function (data) {
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
+
             //De belangrijkste gegevens wordt zichtbaar op de pagina
             $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
@@ -134,9 +165,8 @@ $(document).ready(function () {
                 e.preventDefault();
                 let videoIndex = ($(this).index());
 
-                console.log(videoIndex);
                 //Fout bij het ophalen van informatie door cors
-                $.ajax({
+                /* $.ajax({
                     url: "http://127.0.0.1:5500/index.html#video",
                     type: "POST",
                     dataType: "json",
@@ -148,7 +178,7 @@ $(document).ready(function () {
                     failure: function (errMsg) {
                         alert(errMsg);
                     }
-                });
+                }); */
 
                 //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
                 // $(location).attr('href', 'video.html');
@@ -164,5 +194,31 @@ $(document).ready(function () {
                 // ${data.items[i]["key-takeaways"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
             });
         }
+    });
+
+    //Pagination
+
+    //12 video's per pagina tonen
+    pageSize = 12;
+
+    showPage = function (page) {
+        //Hide alle video thumbnails
+        $(".gegevensbutton").hide();
+
+        //Loop die ervoor zorgt dat als je op pagina klikt de juiste pagina tevoorschijn komt
+        $(".gegevensbutton").each(function (n) {
+
+            if (n >= pageSize * (page - 1) && n < pageSize * page)
+                $(this).show();
+        });
+    }
+
+    //Toon de eerste pagina bij het starten van de website
+    showPage(1);
+
+    $("#pages .pages_1").click(function () {
+        $("#pages .pages_1").removeClass("current");
+        $(this).addClass("current");
+        showPage(parseInt($(this).text()));
     });
 });
