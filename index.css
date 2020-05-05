@@ -199,6 +199,11 @@ a:active {
     margin: 15px;
 }
 
+.gegevensbutton:hover{
+    color: #fc2d75;
+    box-shadow: 3px 3px 3px #666a70;
+}
+
 .duur {
     font-family: Montserrat, sans-serif;
     margin-bottom: 24px;
@@ -321,6 +326,7 @@ textarea.w-select {
     width: 100%;
     align-items: center;
     list-style: none;
+    background-color: white;
 }
 
 .pages_1 {
