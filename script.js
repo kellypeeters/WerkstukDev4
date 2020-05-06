@@ -166,38 +166,37 @@ $(document).ready(function () {
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
             console.log(data);
-            
+
             //De belangrijkste gegevens wordt zichtbaar op de pagina
             $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
-            ${data.items[i]["video-length"]} </p> </button>`);
+            ${data.items[i]["video-length"]} </p>`);
         }
-            $('.gegevensbutton').click(function (e) {
-                e.preventDefault();
-                //Krijg de index van de video waarop geklikt is
-                let videoIndex = ($(this).index());
 
-                // Put the object into storage
-                localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
+        $('.gegevensbutton').click(function (e) {
+            e.preventDefault();
+            //Krijg de index van de video waarop geklikt is
+            let videoIndex = ($(this).index());
 
-                // Retrieve the object from storage                    
-                let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
+            // Put the object into storage
+            localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
 
-                console.log(retrievedObject);
+            // Retrieve the object from storage                    
+            let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
 
-                //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
-                //$(location).attr('href', 'video.html');
+            console.log(retrievedObject);
 
+            //Wanneer op een video geklikt wordt wordt de bovenste elementen gehide zodat hier de juiste video getoont kan worden
+            $(location).attr('href', 'video.html');
 
-                //De video wordt getoond
-                $('#video').prepend(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);   
+            //De thumbnail waarop geklikt is zijn video wordt getoond op de pagina
+            $('#videosbekijken').prepend(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);
 
-                //$('.informatie').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
-                //${data.items[retrievedObject]["video-notes"]}</p><p>${data.items[retrievedObject]["social-share-description"]}</p></div>`);
+            $('.informatie').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
+                ${data.items[retrievedObject]["video-notes"]}</p></div>`);
 
-                // $('.extraGegevens').append(`<div><h5>${data.items[videoIndex].genre}</h5><h5> ${data.items[videoIndex]["video-length"]}</h5><h5> 
-                // ${data.items[i]["key-takeaways"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
-            });
+            $('.extraGegevens').append(`<div><h5>${data.items[retrievedObject]["key-takeaways"]}</h5></div>`);
+        });
     });
 
     //Pagination
@@ -224,5 +223,15 @@ $(document).ready(function () {
         $("#pages .pages_1").removeClass("current");
         $(this).addClass("current");
         showPage(parseInt($(this).text()));
+    });
+
+    $('.error-message-2,.empty-state-2').hide();
+
+    //Form verzenden
+    $("#mening").submit(function (event) {
+        event.preventDefault();
+        $('.submit-button-2').prop('value', 'Browse');
+        $('.form').hide(); 
+        $('.empty-state-2').show();
     });
 });

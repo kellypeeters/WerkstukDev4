@@ -241,7 +241,12 @@ strong {
     margin-bottom: 20%;
 }
 
+.empty-state-2{
+    text-align: center;
+}
+
 .contact {
+    height: 408px;
     background-color: #e8edf4;
     padding: 2%;
     width: 47%;
