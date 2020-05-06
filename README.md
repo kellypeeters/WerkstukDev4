@@ -23,3 +23,10 @@ https://stackoverflow.com/questions/40941260/looping-through-array-in-if-stateme
 
 Pagination
 https://stackoverflow.com/questions/31368999/prev-and-next-button-pagination
+
+Local storage
+https://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
+https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
+
+Video afspelen
+https://developer.vimeo.com/api/oembed/videos

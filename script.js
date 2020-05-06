@@ -115,15 +115,15 @@ $(document).ready(function () {
         });
 
 
-        /*  $.getJSON("entries.json", function (data) {
-              for (let j in data.items) {
-                  $('#dansId').on('click', function () {
-                      if ('.gegevensbutton' == data.items[j]["genre-v2"] == "dans") {
-                          return false;
-                      }
-                  })
-              }
-          }); */
+        $.getJSON("entries.json", function (data) {
+            for (let j in data.items) {
+                $('#dansId').on('click', function () {
+                    if ('.gegevensbutton' == data.items[j]["genre-v2"] == "dans") {
+                        return false;
+                    }
+                })
+            }
+        });
 
         //Wanneer er op de filter dans wordt geklikt gaan de buttons die niet tot deze categorie behoren hiden
         /* $('.gegevensbutton').click(function () {
@@ -163,64 +163,66 @@ $(document).ready(function () {
 
     //Get de naam van de video's van de json file 
     $.getJSON("entries.json", function (data) {
-            //Een loop zodat dit voor elk element kan gedaan worden
-            for (let i in data.items) {
-
-                //De belangrijkste gegevens wordt zichtbaar op de pagina
-                $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
+        //Een loop zodat dit voor elk element kan gedaan worden
+        for (let i in data.items) {
+            console.log(data);
+            
+            //De belangrijkste gegevens wordt zichtbaar op de pagina
+            $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]} </p> </button>`);
+        }
+            $('.gegevensbutton').click(function (e) {
+                e.preventDefault();
+                //Krijg de index van de video waarop geklikt is
+                let videoIndex = ($(this).index());
 
-                $('.gegevensbutton').click(function (e) {
-                    e.preventDefault();
-                    let videoIndex = ($(this).index());
+                // Put the object into storage
+                localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
 
-                    // Put the object into storage
-                    localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
-                    
-                    // Retrieve the object from storage
-                    let retrievedObject = window.localStorage.getItem('videoIndex');
-                    
-                    console.log('retrievedObject: ', JSON.parse(videoIndex));
+                // Retrieve the object from storage                    
+                let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
+
+                console.log(retrievedObject);
 
                 //Wanneer op een video geklikt wordt kom je op een nieuwe pagina terecht waar de video bekeken kan worden
-                 //$(location).attr('href', 'video.html');
+                //$(location).attr('href', 'video.html');
+
 
                 //De video wordt getoond
-                $("#video").append(`<video src="${data.items[retrievedObject]['link-to-video']}" />`);
+                $('#video').prepend(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);   
 
-                // $('.informatie').append(`<div><p>${data.items[videoIndex].excerpt}</p><h2>${data.items[videoIndex].name}</h2><p> 
-                //${data.items[videoIndex]["video-notes"]}</p><p>${data.items[videoIndex]["social-share-description"]}</p></div>`);
+                //$('.informatie').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
+                //${data.items[retrievedObject]["video-notes"]}</p><p>${data.items[retrievedObject]["social-share-description"]}</p></div>`);
 
                 // $('.extraGegevens').append(`<div><h5>${data.items[videoIndex].genre}</h5><h5> ${data.items[videoIndex]["video-length"]}</h5><h5> 
                 // ${data.items[i]["key-takeaways"]}</h5><h5>${data.items[videoIndex]["social-share-description"]}</h5></div>`);
             });
-    }
-});
-
-//Pagination
-
-//12 video's per pagina tonen
-pageSize = 12;
-
-showPage = function (page) {
-    //Hide alle video thumbnails
-    $(".gegevensbutton").hide();
-
-    //Loop die ervoor zorgt dat als je op pagina klikt de juiste pagina tevoorschijn komt
-    $(".gegevensbutton").each(function (n) {
-
-        if (n >= pageSize * (page - 1) && n < pageSize * page)
-            $(this).show();
     });
-}
 
-//Toon de eerste pagina bij het starten van de website
-showPage(1);
+    //Pagination
 
-$("#pages .pages_1").click(function () {
-$("#pages .pages_1").removeClass("current");
-$(this).addClass("current");
-showPage(parseInt($(this).text()));
-});
+    //12 video's per pagina tonen
+    pageSize = 12;
+
+    showPage = function (page) {
+        //Hide alle video thumbnails
+        $(".gegevensbutton").hide();
+
+        //Loop die ervoor zorgt dat als je op pagina klikt de juiste pagina tevoorschijn komt
+        $(".gegevensbutton").each(function (n) {
+
+            if (n >= pageSize * (page - 1) && n < pageSize * page)
+                $(this).show();
+        });
+    }
+
+    //Toon de eerste pagina bij het starten van de website
+    showPage(1);
+
+    $("#pages .pages_1").click(function () {
+        $("#pages .pages_1").removeClass("current");
+        $(this).addClass("current");
+        showPage(parseInt($(this).text()));
+    });
 });
