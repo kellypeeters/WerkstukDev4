@@ -40,27 +40,6 @@ body {
     z-index: 2;
 }
 
-#videosbekijken{
-margin-top: 100px;
-}
-
-.list{
-    background-color: #E8EDF4;
-    margin-right: 70%;
-    line-height: 50px;
-    text-decoration-line: unset;
-}
-
-.list li{
-    list-style-type: square;
-    border-bottom: 2px solid #fff;
-    border-bottom-style: dotted;
-}
-
-.meervideos{
-    margin-top: 100px;
-}
-
 h1 {
     font-size: 58px;
     color: #130b2c;
@@ -212,7 +191,7 @@ a:active {
 }
 
 .gegevensbutton {
-    height: 500px;
+    height: 550px;
     width: 400px;
     background-color: rgb(232, 237, 244);
     border: none;
@@ -220,7 +199,7 @@ a:active {
     margin: 15px;
 }
 
-.gegevensbutton:hover{
+.gegevensbutton:hover {
     color: #fc2d75;
     box-shadow: 3px 3px 3px #666a70;
 }
@@ -234,6 +213,36 @@ a:active {
     width: 230px;
     padding: 36px;
     padding-left: 80px;
+}
+
+#genress{
+   background-color: white;
+   margin: 0;
+   text-transform: uppercase;
+   color: #fc2d75;
+   border-radius: 50px;
+   font-weight: 700;
+}
+
+#videosbekijken {
+    margin-top: 100px;
+}
+
+.list {
+    background-color: #E8EDF4;
+    margin-right: 70%;
+    line-height: 50px;
+    text-decoration-line: unset;
+}
+
+.list li {
+    list-style-type: square;
+    border-bottom: 2px solid #fff;
+    border-bottom-style: dotted;
+}
+
+.meervideos {
+    margin-top: 100px;
 }
 
 /************************
@@ -262,7 +271,7 @@ strong {
     margin-bottom: 20%;
 }
 
-.empty-state-2{
+.empty-state-2 {
     text-align: center;
 }
 

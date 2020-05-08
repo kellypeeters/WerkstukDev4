@@ -139,7 +139,6 @@ $(document).ready(function () {
               };
           }); */
 
-
         $('.filtersWissen').hide();
 
         //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
@@ -163,24 +162,25 @@ $(document).ready(function () {
             console.log(data);
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class='gegevensbutton' type='button' action='video.html'> <img src="${data.items[i].thumbnail.url}"
-            class='thumbnail' /> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
-            ${data.items[i]["video-length"]}</p><p id="genress"> ${data.items[i]["genre-v2"]} </p>`);
+            $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
+            class='thumbnail' /><p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
+            ${data.items[i]["video-length"]}</p></button>`);
         }
 
         $('.gegevensbutton').click(function (e) {
             e.preventDefault();
-
+ 
             //Krijg de index van de video waarop geklikt is
             let videoIndex = ($(this).index());
 
-            // Put the object into storage
+            // Put the object into storage 
             localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
 
             //Wanneer op een video geklikt wordt wordt de bovenste elementen gehide zodat hier de juiste video getoont kan worden
             $('.hide').hide();
 
-            location.href = "#videosbekijken"; 
+            //Navigeer naar de id waar de gegevens van de video bekeken kunnen worden
+            location.href = "#videosbekijken";
 
             // Retrieve the object from storage                    
             let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
@@ -194,7 +194,7 @@ $(document).ready(function () {
             $('#videosbekijken').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
               ${data.items[retrievedObject]["video-notes"]}</p></div><div class='list'><h5>${data.items[retrievedObject]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
-        });
+        }); 
     });
 
     //Pagination
