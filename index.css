@@ -28,11 +28,37 @@ body {
     padding-bottom: 100px;
 }
 
+.overlay {
+    position: relative;
+    z-index: 2;
+}
+
 .overlay2 {
     background-color: white;
     margin-bottom: 5%;
     position: relative;
     z-index: 2;
+}
+
+.videosbekijken{
+margin-top: 100px;
+}
+
+.list{
+    background-color: #E8EDF4;
+    margin-right: 70%;
+    line-height: 50px;
+    text-decoration-line: unset;
+}
+
+.list li{
+    list-style-type: square;
+    border-bottom: 2px solid #fff;
+    border-bottom-style: dotted;
+}
+
+.meervideos{
+    margin-top: 100px;
 }
 
 h1 {
@@ -69,11 +95,6 @@ p {
     margin-bottom: 24px;
     line-height: 25px;
     font-weight: 300;
-}
-
-.overlay {
-    position: relative;
-    z-index: 2;
 }
 
 /************************

@@ -3,7 +3,6 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
 
-
 const apiKey = process.env.apiKey;
 const apiUrl = process.env.apiUrl;
 
@@ -21,7 +20,6 @@ let settings = {
   .then((json) => {
     console.log(`Got the response, there are ${json.items.length} entries`)
   });
-
 
 var port = 8000;
 var serverUrl = "127.0.0.1";
