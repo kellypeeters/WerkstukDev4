@@ -180,16 +180,18 @@ $(document).ready(function () {
             //Wanneer op een video geklikt wordt wordt de bovenste elementen gehide zodat hier de juiste video getoont kan worden
             $('.hide').hide();
 
+            location.href = "#videosbekijken"; 
+
             // Retrieve the object from storage                    
             let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
 
             console.log(retrievedObject);
 
             //De thumbnail waarop geklikt is zijn video wordt getoond op de pagina
-            //$('.videosbekijken').append(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);
+            $('#videosbekijken').append(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);
 
             //De thumbnail waarop geklikt haar gegevens komen tevoorschijn om de pagina
-            $('.videosbekijken').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
+            $('#videosbekijken').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
               ${data.items[retrievedObject]["video-notes"]}</p></div><div class='list'><h5>${data.items[retrievedObject]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
         });
