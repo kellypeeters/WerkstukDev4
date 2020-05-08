@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  
     //Formulier succesvol verzenden
     /*$("#contact-form").on('submit',function(event) {
                 event.preventDefault(); // to prevent default page reloading
@@ -79,6 +79,11 @@ $(document).ready(function () {
         for (j = 0; j < 100; j++) {
             if (data.items[j]["genre-v2"] == "dans") {
                 dans++;
+               /* let genreVideo = ($(this).index());
+                console.log(genreVideo);
+                $('#dansId').on('click', function () {
+                    $(genreVideo).hide();
+                });*/
             } else if (data.items[j]["genre-v2"] == "comedy") {
                 comedy++;
             } else if (data.items[j]["genre-v2"] == "theater") {
@@ -100,6 +105,7 @@ $(document).ready(function () {
             }
         }
 
+ 
         //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
         $('.genre').append("<button id ='dansId' class = 'genrebutton'>" + "dans (" + dans + ")" +
             "</button><button class = 'genrebutton'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton'>" + "theater (" + theater + ")" +
@@ -204,7 +210,7 @@ $(document).ready(function () {
     //12 video's per pagina tonen
     pageSize = 12;
 
-    showPage = function (page) {
+    function showPage(page) {
         //Hide alle video thumbnails
         $(".gegevensbutton").hide();
 
@@ -216,22 +222,29 @@ $(document).ready(function () {
         });
     }
 
-    //Toon de eerste pagina bij het starten van de website
+    //Toon de eerste pagina bij het starten van de website  
+    //Deze lijn doet niets en ik snap niet hoe dit komt
     showPage(1);
 
+    //Wanneer er op een pagina wordt gekikt wordt de pagina die aangeklikt is getoont met een andere design
     $("#pages .pages_1").click(function () {
         $("#pages .pages_1").removeClass("current");
         $(this).addClass("current");
         showPage(parseInt($(this).text()));
     });
 
+    //Hide de meldingen bij het form
     $('.error-message-2,.empty-state-2').hide();
 
     //Form verzenden
     $("#mening").submit(function (event) {
+        //Zorgt ervoor dat de pagina niet refreshed
         event.preventDefault();
-        $('.submit-button-2').prop('value', 'Browse');
-        $('.form').hide(); 
+        //Verandert de value van de button
+        $('.submit-button-2').prop('value', 'Even geduld...');
+        //Hide het formulier
+        $('.form').hide();
+        //Toon de melding
         $('.empty-state-2').show();
     });
 });
