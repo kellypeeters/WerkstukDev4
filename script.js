@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    
+
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
 
@@ -59,11 +59,6 @@ $(document).ready(function () {
         for (j = 0; j < 100; j++) {
             if (data.items[j]["genre-v2"] == "dans") {
                 dans++;
-                /* let genreVideo = ($(this).index());
-                 console.log(genreVideo);
-                 $('#dansId').on('click', function () {
-                     $(genreVideo).hide();
-                 });*/
             } else if (data.items[j]["genre-v2"] == "comedy") {
                 comedy++;
             } else if (data.items[j]["genre-v2"] == "theater") {
@@ -137,11 +132,29 @@ $(document).ready(function () {
             $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /><p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
-            let vv = data.items[i]["genre-v2"];
-            if(vv == 'dans'){
-                console.log('hey');
-            }else{
-                console.log('nee');
+
+            let dansgenre = data.items[i]["genre-v2"];
+
+            if (dansgenre == 'dans') {
+                console.log('dans');
+            } else  if (dansgenre == 'concert'){
+                console.log('concert');
+            }else  if (dansgenre == 'theater'){
+                console.log('theater');
+            }else  if (dansgenre == 'multidisciplinair'){
+                console.log('multidisciplinair');
+            }else  if (dansgenre == 'literatuur'){
+                console.log('literatuur');
+            }else  if (dansgenre == 'comedy'){
+                console.log('comedy');
+            }else  if (dansgenre == 'muziektheater'){
+                console.log('muziektheater');
+            }else  if (dansgenre == 'figurentheater'){
+                console.log('figurentheater');
+            }else  if (dansgenre == 'circus'){
+                console.log('circus');
+            }else  if (dansgenre == 'opera'){
+                console.log('opera');
             }
         }
 
@@ -171,7 +184,7 @@ $(document).ready(function () {
             $('#videosbekijken').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
               ${data.items[retrievedObject]["video-notes"]}</p></div><div class='list'><h5>${data.items[retrievedObject]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
-        }); 
+        });
     });
 
     //Pagination
@@ -188,7 +201,7 @@ $(document).ready(function () {
 
             if (n >= pageSize * (page - 1) && n < pageSize * page)
                 $(this).show();
-        }); 
+        });
     }
 
     //Toon de eerste pagina bij het starten van de website  
