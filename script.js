@@ -1,26 +1,6 @@
 $(document).ready(function () {
 
-    //Formulier succesvol verzenden
-    /*$("#contact-form").on('submit',function(event) {
-                event.preventDefault(); // to prevent default page reloading
-                var dataString = $(this).serialize(); // to get the form data
-                
-                $.ajax({
-                    type: "POST",
-                    url: "form-to-email.php",
-                    data: dataString,
-                    success: function(data){
-                        $('#contact-form')[0].reset(); // to reset form data
-                    }
-                }).done(function(data){
-                    setTimeout(function () {
-                        alert("Form submitted successfully! We'll get back to you soon. Thank you.");
-                    }, 2000);
-                    //alert("Form submitted successfully! We'll get back to you soon. Thank you."); // This will be called after the ajax executed
-                });
-
-            });*/
-
+    
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
 
@@ -131,14 +111,6 @@ $(document).ready(function () {
              }
          }); */
 
-        /*  $.getJSON("entries.json", function (data) {
-              for (let j in data.items) {
-                  console.log('.gegevensbutton' == data.items[j]["genre-v2"] == "dans");
-                  //  if (this == data.items[j]["genre-v2"] == "dans") {
-                  //    $(this).hide();
-              };
-          }); */
-
         $('.filtersWissen').hide();
 
         //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
@@ -165,11 +137,16 @@ $(document).ready(function () {
             $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail' /><p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
+            let vv = data.items[i]["genre-v2"];
+            if(vv == 'dans'){
+                console.log('hey');
+            }else{
+                console.log('nee');
+            }
         }
 
         $('.gegevensbutton').click(function (e) {
             e.preventDefault();
- 
             //Krijg de index van de video waarop geklikt is
             let videoIndex = ($(this).index());
 
@@ -211,7 +188,7 @@ $(document).ready(function () {
 
             if (n >= pageSize * (page - 1) && n < pageSize * page)
                 $(this).show();
-        });
+        }); 
     }
 
     //Toon de eerste pagina bij het starten van de website  
