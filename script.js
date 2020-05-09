@@ -133,27 +133,32 @@ $(document).ready(function () {
             class='thumbnail' /><p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
-            let dansgenre = data.items[i]["genre-v2"];
+            let genredata = data.items[i]["genre-v2"];
 
-            if (dansgenre == 'dans') {
+            //Gegevensbutton zijn value opslaan als het genre
+            let dansgenre = $(".gegevensbutton").val(genredata);
+            
+            console.log(dansgenre.val());
+
+            if ($(".gegevensbutton").val(genredata) == 'dans') {
                 console.log('dans');
-            } else  if (dansgenre == 'concert'){
+            } else if (dansgenre == 'concert') {
                 console.log('concert');
-            }else  if (dansgenre == 'theater'){
+            } else if (dansgenre == 'theater') {
                 console.log('theater');
-            }else  if (dansgenre == 'multidisciplinair'){
+            } else if (dansgenre == 'multidisciplinair') {
                 console.log('multidisciplinair');
-            }else  if (dansgenre == 'literatuur'){
+            } else if (dansgenre == 'literatuur') {
                 console.log('literatuur');
-            }else  if (dansgenre == 'comedy'){
+            } else if (dansgenre == 'comedy') {
                 console.log('comedy');
-            }else  if (dansgenre == 'muziektheater'){
+            } else if (dansgenre == 'muziektheater') {
                 console.log('muziektheater');
-            }else  if (dansgenre == 'figurentheater'){
+            } else if (dansgenre == 'figurentheater') {
                 console.log('figurentheater');
-            }else  if (dansgenre == 'circus'){
+            } else if (dansgenre == 'circus') {
                 console.log('circus');
-            }else  if (dansgenre == 'opera'){
+            } else if (dansgenre == 'opera') {
                 console.log('opera');
             }
         }
