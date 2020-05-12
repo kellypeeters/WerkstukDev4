@@ -140,9 +140,9 @@ $(document).ready(function () {
 
             console.log(dansgenre.val());
 
-            if (dansgenre.val() == 'dans') {
-                let dada = $('.gegevensbutton').val('dans');
-                console.log(dada);
+            if ($('.gegevensbutton').val() == 'dans') {
+               console.log('yessss');
+              $('.gegevensbutton').val(this).hide();
             } else if (dansgenre.val() == 'concert') {
                 console.log('concert');
             } else if (dansgenre.val() == 'theater') {
