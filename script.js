@@ -129,7 +129,7 @@ $(document).ready(function () {
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
             $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
-            class='thumbnail' /><p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
+            class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
             //In een variabele de json call genre plaatsen
@@ -141,7 +141,8 @@ $(document).ready(function () {
             console.log(dansgenre.val());
 
             if (dansgenre.val() == 'dans') {
-                console.log('dans');
+                let dada = $('.gegevensbutton').val('dans');
+                console.log(dada);
             } else if (dansgenre.val() == 'concert') {
                 console.log('concert');
             } else if (dansgenre.val() == 'theater') {
@@ -165,6 +166,7 @@ $(document).ready(function () {
 
         $('.gegevensbutton').click(function (e) {
             e.preventDefault();
+
             //Krijg de index van de video waarop geklikt is
             let videoIndex = ($(this).index());
 
@@ -192,6 +194,7 @@ $(document).ready(function () {
         });
     });
 
+    /*
     //Pagination
 
     //12 video's per pagina tonen
@@ -227,11 +230,15 @@ $(document).ready(function () {
     $("#mening").submit(function (event) {
         //Zorgt ervoor dat de pagina niet refreshed
         event.preventDefault();
-        //Verandert de value van de button
-        $('.submit-button-2').prop('value', 'Even geduld...');
+        //Wanneer het form aan het laaden is
+        $("#mening").on("load", function () {
+            //Verandert de value van de button
+            $('.submit-button-2').prop('value', 'Even geduld...');
+        });
         //Hide het formulier
         $('.form').hide();
         //Toon de melding
         $('.empty-state-2').show();
     });
+*/
 });
