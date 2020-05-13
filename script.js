@@ -137,12 +137,13 @@ $(document).ready(function () {
 
             //Gegevensbutton zijn value opslaan als het genre
             let dansgenre = $(".gegevensbutton").val(genredata);
+        }
 
-            console.log(dansgenre.val());
-
-            if ($('.gegevensbutton').val() == 'dans') {
-               console.log('yessss');
-              $('.gegevensbutton').val(this).hide();
+        $('#dansId').click(function () {
+           
+            if (dansgenre.val() == 'muziektheater') {
+                console.log($('.gegevensbutton').eq(this));
+                $('.gegevensbutton').val(this).hide();
             } else if (dansgenre.val() == 'concert') {
                 console.log('concert');
             } else if (dansgenre.val() == 'theater') {
@@ -162,7 +163,7 @@ $(document).ready(function () {
             } else if (dansgenre.val() == 'opera') {
                 console.log('opera');
             }
-        }
+        });
 
         $('.gegevensbutton').click(function (e) {
             e.preventDefault();
@@ -194,7 +195,6 @@ $(document).ready(function () {
         });
     });
 
-    /*
     //Pagination
 
     //12 video's per pagina tonen
@@ -240,5 +240,4 @@ $(document).ready(function () {
         //Toon de melding
         $('.empty-state-2').show();
     });
-*/
 });
