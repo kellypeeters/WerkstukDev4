@@ -55,7 +55,7 @@ $(document).ready(function () {
         let opera = 0;
 
         //Een loop zodat kan nagekeken worden hoeveel verschillende video's per genre er zijn
-        for (j = 0; j < 100; j++) {
+        for (j = 0; j < data.items.length; j++) {
             if (data.items[j]["genre-v2"] == "dans") {
                 dans++;
             } else if (data.items[j]["genre-v2"] == "comedy") {
@@ -79,7 +79,6 @@ $(document).ready(function () {
             }
         }
 
-
         //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
         $('.genre').append("<button id ='dansId' class = 'genrebutton'>" + "dans (" + dans + ")" +
             "</button><button class = 'genrebutton'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton'>" + "theater (" + theater + ")" +
@@ -88,22 +87,11 @@ $(document).ready(function () {
             "</button><button class = 'genrebutton'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton'>" + "circus (" + circus + ")" +
             "</button><button class = 'genrebutton'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button>");
 
-        /* Door de togleclass functie wordt de class veranderd wanneer ik op de button klik
+        /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
         $('.genrebutton').on('click', function () {
             $(this).toggleClass('genrebutton-active');
         });
-
-        //Wanneer er op de filter dans wordt geklikt gaan de buttons die niet tot deze categorie behoren hiden
-        /* $('.gegevensbutton').click(function () {
-             //Alle video's die als genre niet dans hebben worden gehide  
-             for (let j = 0; j < 100; j++) {
-                 if ('.gegevensbutton' !== data.items[j]["genre-v2"] == "dans") {
-                     $(this).hide();
-                     console.log(this);
-                 }
-             }
-         }); */
 
         $('.filtersWissen').hide();
 
@@ -132,34 +120,41 @@ $(document).ready(function () {
             class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
+            $('.inputfield').on('keyup', function () {
+                console.log($('.inputfield').val());
+                $('.searchgegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
+                class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
+                ${data.items[i]["video-length"]}</p></button>`);
+            });
+
             //In een variabele de json call genre plaatsen
             let genredata = data.items[i]["genre-v2"];
 
             //Gegevensbutton zijn value opslaan als het genre
             let dansgenre = $(".gegevensbutton").val(genredata);
 
-                if (dansgenre.val() == 'dans') {
-                    console.log($('.gegevensbutton').eq(this));
-                    $('.gegevensbutton').val(this).hide();
-                } else if (dansgenre.val() == 'concert') {
-                    console.log('concert');
-                } else if (dansgenre.val() == 'theater') {
-                    console.log('theater');
-                } else if (dansgenre.val() == 'multidisciplinair') {
-                    console.log('multidisciplinair');
-                } else if (dansgenre.val() == 'literatuur') {
-                    console.log('literatuur');
-                } else if (dansgenre.val() == 'comedy') {
-                    console.log('comedy');
-                } else if (dansgenre.val() == 'muziektheater') {
-                    console.log('muziektheater');
-                } else if (dansgenre.val() == 'figurentheater') {
-                    console.log('figurentheater');
-                } else if (dansgenre.val() == 'circus') {
-                    console.log('circus');
-                } else if (dansgenre.val() == 'opera') {
-                    console.log('opera');
-                }
+            if (dansgenre.val() == 'dans') {
+                console.log($('.gegevensbutton').eq(this));
+                $('.gegevensbutton').val(this).hide();
+            } else if (dansgenre.val() == 'concert') {
+                console.log('concert');
+            } else if (dansgenre.val() == 'theater') {
+                console.log('theater');
+            } else if (dansgenre.val() == 'multidisciplinair') {
+                console.log('multidisciplinair');
+            } else if (dansgenre.val() == 'literatuur') {
+                console.log('literatuur');
+            } else if (dansgenre.val() == 'comedy') {
+                console.log('comedy');
+            } else if (dansgenre.val() == 'muziektheater') {
+                console.log('muziektheater');
+            } else if (dansgenre.val() == 'figurentheater') {
+                console.log('figurentheater');
+            } else if (dansgenre.val() == 'circus') {
+                console.log('circus');
+            } else if (dansgenre.val() == 'opera') {
+                console.log('opera');
+            }
         }
 
         $('.gegevensbutton').click(function (e) {
@@ -168,26 +163,18 @@ $(document).ready(function () {
             //Krijg de index van de video waarop geklikt is
             let videoIndex = ($(this).index());
 
-            // Put the object into storage 
-            localStorage.setItem('videoIndex', JSON.stringify(videoIndex));
-
             //Wanneer op een video geklikt wordt wordt de bovenste elementen gehide zodat hier de juiste video getoont kan worden
             $('.hide').hide();
 
             //Navigeer naar de id waar de gegevens van de video bekeken kunnen worden
             location.href = "#videosbekijken";
 
-            // Retrieve the object from storage                    
-            let retrievedObject = JSON.parse(window.localStorage.getItem('videoIndex'));
-
-            console.log(retrievedObject);
-
             //De thumbnail waarop geklikt is zijn video wordt getoond op de pagina
-            $('#videosbekijken').append(`${data.items[retrievedObject]["link-to-video"].metadata.html}`);
+            $('#videosbekijken').append(`${data.items[videoIndex]["link-to-video"].metadata.html}`);
 
             //De thumbnail waarop geklikt haar gegevens komen tevoorschijn om de pagina
-            $('#videosbekijken').append(`<div><p>${data.items[retrievedObject].excerpt}</p><h2>${data.items[retrievedObject].name}</h2><p> 
-              ${data.items[retrievedObject]["video-notes"]}</p></div><div class='list'><h5>${data.items[retrievedObject]["key-takeaways"]}</h5>
+            $('#videosbekijken').append(`<div><p>${data.items[videoIndex].excerpt}</p><h2>${data.items[videoIndex].name}</h2><p> 
+              ${data.items[videoIndex]["video-notes"]}</p></div><div class='list'><h5>${data.items[videoIndex]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
         });
     });

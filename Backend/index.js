@@ -6,13 +6,14 @@ const app = express();
 const port = 8000;
 let cors = require('cors');
 let bodyParser = require('body-parser');
+var http = require('http')
 
 app.use(cors());
 app.use(express.static('Frontend'));
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({ 
     extended: false
 }));
 

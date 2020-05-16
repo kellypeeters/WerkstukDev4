@@ -143,6 +143,18 @@ a:active {
 /************************
 *       Categorie       *
 ************************/
+.inputfield{
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: rgb(232, 237, 244);
+    border: 2px solid rgb(232, 237, 244);
+    color: #130b2c;
+    border-radius: 10px;
+    font-size: 15px;
+    padding-right: 150px;
+    padding: 12px;
+    font-family: Montserrat, sans-serif;
+}
 
 .volwassenenbutton,
 .familiebutton,
@@ -211,13 +223,13 @@ a:active {
     padding-left: 80px;
 }
 
-#genress{
-   background-color: white;
-   margin: 0;
-   text-transform: uppercase;
-   color: #fc2d75;
-   border-radius: 50px;
-   font-weight: 700;
+#genress {
+    background-color: white;
+    margin: 0;
+    text-transform: uppercase;
+    color: #fc2d75;
+    border-radius: 50px;
+    font-weight: 700;
 }
 
 #videosbekijken {
