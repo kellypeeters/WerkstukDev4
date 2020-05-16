@@ -120,13 +120,6 @@ $(document).ready(function () {
             class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
-            $('.inputfield').on('keyup', function () {
-                console.log($('.inputfield').val());
-                $('.searchgegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
-                class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
-                ${data.items[i]["video-length"]}</p></button>`);
-            });
-
             //In een variabele de json call genre plaatsen
             let genredata = data.items[i]["genre-v2"];
 
@@ -177,6 +170,14 @@ $(document).ready(function () {
               ${data.items[videoIndex]["video-notes"]}</p></div><div class='list'><h5>${data.items[videoIndex]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
         });
+        $('.inputfield').on('keyup', function () {
+            console.log($(this).val());
+            let value = $(this).val().toLowerCase();
+            $(".gegevensbutton").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
     });
 
     //Pagination
