@@ -13,6 +13,17 @@ Aanpak
     3.5 Searchbar laten werken
 4. Index.js file aanpassen, omdat ik steeds foutmeldingen krijg als ik het op de port wil laten draaien
 
+Welke functionaliteiten werken in mijn app?
+    - De gegevens worden getoont
+    - Genres en doelgroep verschijnen op de pagina en bij genres wordt de hoeveelheid video's per genre getoont
+    - Wanneer er op genres en doelgroepen wordt geklikt komen die video's te verschijn (nog een probleem wanneer ik deze wil       
+    wegdoen)
+    - Wanneer er op een video wordt geklikt wordt de video en bijhorende info getoont (nog een probleem met het hiden van de vorige video)
+    - Wanneer ik op en doelgroep klik veranderen de cijfers van de genres om te tonen hoeveel genres er zijn per doelgroep
+    - Pagina's werken als je op een paginanummer duwt (enkel bij het tonen van alle video's, niet wanneer er op een genre of doelgroep wordt geklikt)
+    - Filters wissen knop werkt
+    - Searchbar werkt 
+    - Wanneer er op het formulier op de verzend knop wordt geduwd wordt er een submitfunctie uitgevoerd en veranderd het formulier naar een boodschap (ben niet zeker of dit een goeie manier is)
 
 Mijn doel is om de gehele app na te maken (met alle functionaliteiten) en zo weinig mogelijk verschil qua uitzicht.
 
