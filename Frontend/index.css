@@ -142,9 +142,9 @@ a:active {
 
 /************************
 *       Categorie       *
-************************/  
+************************/
 
-.inputfield{
+.inputfield {
     margin-left: 10px;
     margin-top: 10px;
     background-color: rgb(232, 237, 244);
@@ -159,9 +159,8 @@ a:active {
     font-family: Montserrat, sans-serif;
 }
 
-#volwassenenbutton,
-#familiebutton,
-.genrebutton {
+.genrebutton,
+.doelgroepbutton {
     margin-left: 10px;
     margin-top: 10px;
     background-color: rgb(232, 237, 244);
@@ -174,7 +173,8 @@ a:active {
     font-family: Montserrat, sans-serif;
 }
 
-.genrebutton-active {
+.genrebutton-active,
+.doelgroepbutton-active {
     background-color: white;
     border: 2px solid #fc2d75;
     color: #fc2d75;
@@ -201,7 +201,7 @@ a:active {
     border-bottom: solid 5px #fc2d75;
 }
 
-.gegevensbutton {
+#current {
     height: 550px;
     width: 400px;
     background-color: rgb(232, 237, 244);
@@ -210,7 +210,7 @@ a:active {
     margin: 15px;
 }
 
-.gegevensbutton:hover {
+#current:hover {
     color: #fc2d75;
     box-shadow: 3px 3px 3px #666a70;
 }

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
 
@@ -18,19 +18,8 @@ $(document).ready(function () {
         /*Er verschijnen 2 buttons in de class doelgroep, waardoor de gebruiker kan kiezen welke doelgroep hij wil bekijken.
         Het aantal familie/ volwassenen categorie wordt achteraan de button bijgezet,zodat de gebruiker weet hoeveel video's er zijn
         van een doelgroep */
-        $('.doelgroep').append("<button class='doelgroepbutton' id = 'volwassenenbutton' data-filter='volwassenen'>" + "volwassenen (" + volwassenen + ")" +
-            "</button><button  class='doelgroepbutton' id = 'familiebutton' data-filter='familie'>" + "familie (" + number + ")" + "</button>");
-        /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
-        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
-        $('#volwassenenbutton').on('click', function () {
-            $(this).toggleClass('genrebutton-active');
-        });
-
-        /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
-        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
-        $('#familiebutton').on('click', function () {
-            $(this).toggleClass('genrebutton-active');
-        });
+        $('.doelgroep').append("<button class='doelgroepbutton' id = 'volwassenenbutton' data-filters='volwassenen'>" + "volwassenen (" + volwassenen + ")" +
+            "</button><button  class='doelgroepbutton' id = 'familiebutton' data-filters='familie'>" + "familie (" + number + ")" + "</button>");
     });
 
     //Get de genre van de video's van de json file 
@@ -81,12 +70,6 @@ $(document).ready(function () {
             "</button><button class = 'genrebutton' data-filter='figurentheater'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton' data-filter='circus'>" + "circus (" + circus + ")" +
             "</button><button class = 'genrebutton' data-filter='opera'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button>");
 
-        /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
-        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
-        $('.genrebutton').on('click', function () {
-            $(this).toggleClass('genrebutton-active');
-        });
-
         $('.filtersWissen').hide();
 
         //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
@@ -110,38 +93,9 @@ $(document).ready(function () {
             console.log(data);
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class='gegevensbutton' type='button' data-category='${data.items[i]["genre-v2"]}' data-doelgroep='${data.items[i].category}'> <img src="${data.items[i].thumbnail.url}"
+            $('.gegevens').append(`<button class='gegevensbutton' id='current' type='button' data-category='${data.items[i]["genre-v2"]}' data-doelgroep='${data.items[i].category}'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
-
-            //In een variabele de json call genre plaatsen 
-             let genredata = data.items[i]["genre-v2"];
-
-             //Gegevensbutton zijn value opslaan als het genre
-             let dansgenre = $(".gegevensbutton").val(genredata);
-
-             if (dansgenre.val() == 'dans') {
-                 console.log($('.gegevensbutton').eq(this));
-             } else if (dansgenre.val() == 'concert') {  
-                 console.log('concert');
-             } else if (dansgenre.val() == 'theater') {
-                 console.log('theater'); 
-             } else if (dansgenre.val() == 'multidisciplinair') {
-                 console.log('multidisciplinair');
-                 $('.gegevensbutton').val(this).hide(); 
-             } else if (dansgenre.val() == 'literatuur') {
-                 console.log('literatuur');
-             } else if (dansgenre.val() == 'comedy') {
-                 console.log('comedy');
-             } else if (dansgenre.val() == 'muziektheater') {
-                 console.log('muziektheater');
-             } else if (dansgenre.val() == 'figurentheater') {
-                 console.log('figurentheater');
-             } else if (dansgenre.val() == 'circus') {
-                 console.log('circus');
-             } else if (dansgenre.val() == 'opera') {
-                 console.log('opera');
-             } 
         }
 
         $('.gegevensbutton').click(function (e) {
@@ -172,7 +126,7 @@ $(document).ready(function () {
             $(".gegevensbutton").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
-            if(value === ''){
+            if (value === '') {
                 $('.gegevensbutton').show();
             }
         });
@@ -185,41 +139,52 @@ $(document).ready(function () {
         filters.on('click', function (e) {
             //Refresh de pagina niet
             e.preventDefault();
+            /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
+        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
+            $(this).toggleClass('genrebutton-active');
+            //Hide alle video's
+            $('.gegevensbutton').hide();
             //Toont welke genrebutton aangeklikt is
             let clicked = $(this);
             //Toont welk genre de button waarop geklikt is heeft
-            let filterColor = clicked.attr('data-filter');
+            let filterGenre = clicked.attr('data-filter');
 
-            boxes.filter('[data-category="' + filterColor + '"]').each(function () {
+            boxes.filter('[data-category="' + filterGenre + '"]').each(function () {
                 $(this).show();
+                $(this).removeClass('gegevensbutton');
             });
         });
 
         //Doelgroep van de buttons wordt in variabelen gestoken
-        let filtersDoelgroep = $('.doelgroepbutton[data-filter]');
+        let filtersDoelgroep = $('.doelgroepbutton[data-filters]');
         let doelgroepGegevens = $('.gegevensbutton[data-doelgroep]');
 
         //Wanneer er op genrebutton wordt geklikt
         filtersDoelgroep.on('click', function (e) {
+            /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
+            hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
+            $(this).toggleClass('doelgroepbutton-active');
             //Refresh de pagina niet
             e.preventDefault();
+            //Hide alle video's
+            $('.gegevensbutton').hide();
             //Toont welke genrebutton aangeklikt is
             let isClicked = $(this);
             //Toont welk genre de button waarop geklikt is heeft
-            let filter = isClicked.attr('data-filter');
-
-            doelgroepGegevens.filter('[data-doelgroep="' + filter + '"]').each(function () {
+            let filterDoelgroep = isClicked.attr('data-filters');
+            doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () {
                 $(this).show();
+                $(this).removeClass('gegevensbutton');
             });
         });
     });
- 
+
     //Pagination
 
     //12 video's per pagina tonen
     pageSize = 12;
 
-    function showPage(page) {
+    let showPage = (page) => {
         //Hide alle video thumbnails
         $(".gegevensbutton").hide();
 
