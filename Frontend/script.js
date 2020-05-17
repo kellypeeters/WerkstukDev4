@@ -213,17 +213,27 @@ $(document).ready(function () {
             //Toont welke genrebutton aangeklikt is
             let clicked = $(this);
 
+            //Als de geselecteerde genre heeft als class active
             if (clicked.hasClass('genrebutton-active')) {
-                let filterGenre = clicked.attr('data-filter');
+
                 //Toont welk genre de button waarop geklikt is heeft
+                let filterGenre = clicked.attr('data-filter');
+                //Gaat op zoekn in de video's welke video het geslecteerde genre heeft
                 genreGegevens.filter('[data-category="' + filterGenre + '"]').each(function () {
+                    //Toont dit genre
                     $(this).show();
+                    //Verwijderd de class van de button
                     $(this).removeClass('gegevensbutton');
                 });
+                //Als ze niet active zijn 
             } else {
+                //Toont welk genre de button waarop geklikt is heeft
                 let filterGenre = clicked.attr('data-filter');
+                //Gaat op zoek in de video's welke video het geslecteerde genre heeft
                 genreGegevens.filter('[data-category="' + filterGenre + '"]').each(function () {
+                    //Toont dit genre
                     $(this).hide();
+                    //Verwijderd de class van de button
                     $(this).addClass('gegevensbutton');
                 });
             }
@@ -264,13 +274,32 @@ $(document).ready(function () {
             $('.gegevensbutton').hide();
             //Toont welke genrebutton aangeklikt is
             let isClicked = $(this);
-            //Toont welk genre de button waarop geklikt is heeft
-            let filterDoelgroep = isClicked.attr('data-filters');
-            doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () {
-                $(this).show();
-                $(this).removeClass('gegevensbutton');
-            });
+            //Als de geselecteerde genre heeft als class active
+            if (isClicked.hasClass('doelgroepbutton-active')) {
+
+                //Toont welke doelgroep de button waarop geklikt is heeft
+                let filterDoelgroep = isClicked.attr('data-filters');
+                //Gaat op zoek in de video's welke video het geslecteerde genre heeft
+                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () { 
+                    //Toont de doelgroep
+                    $(this).show();
+                    //Verwijderd de class van de button
+                    $(this).removeClass('gegevensbutton');
+                });
+                //Als ze niet active zijn 
+            } else {
+                //Toont welke doelgroep de button waarop geklikt is heeft
+                let filterDoelgroep = isClicked.attr('data-filters');
+                //Gaat op zoek in de video's welke video de geslecteerde doelgroep heeft
+                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () { 
+                    //Hide dit genre
+                    $(this).hide();
+                    //Verwijderd de class van de button
+                    $(this).addClass('gegevensbutton');
+                }); 
+            }
         });
+
         //Hide de genres als een bepaalde doelgroep is geselecteerd
         $('#volwassenenGenre').hide();
         $('#familieGenre').hide();
