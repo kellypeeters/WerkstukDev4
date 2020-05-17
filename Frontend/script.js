@@ -280,7 +280,7 @@ $(document).ready(function () {
                 //Toont welke doelgroep de button waarop geklikt is heeft
                 let filterDoelgroep = isClicked.attr('data-filters');
                 //Gaat op zoek in de video's welke video het geslecteerde genre heeft
-                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () { 
+                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () {
                     //Toont de doelgroep
                     $(this).show();
                     //Verwijderd de class van de button
@@ -291,46 +291,47 @@ $(document).ready(function () {
                 //Toont welke doelgroep de button waarop geklikt is heeft
                 let filterDoelgroep = isClicked.attr('data-filters');
                 //Gaat op zoek in de video's welke video de geslecteerde doelgroep heeft
-                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () { 
+                doelgroepGegevens.filter('[data-doelgroep="' + filterDoelgroep + '"]').each(function () {
                     //Hide dit genre
                     $(this).hide();
                     //Verwijderd de class van de button
                     $(this).addClass('gegevensbutton');
-                }); 
+                });
             }
         });
 
         //Hide de genres als een bepaalde doelgroep is geselecteerd
         $('#volwassenenGenre').hide();
         $('#familieGenre').hide();
-    });
 
-    //Pagination
-    //Pagination werkt pas als je op een pagina klikt en werkt niet als je op de categorien of doelgroepen klikt
-    //12 video's per pagina tonen
-    pageSize = 12;
+        //Pagination
+        //Pagination werkt pas als je op een pagina klikt en werkt niet als je op de categorien of doelgroepen klikt
+        //12 video's per pagina tonen
+        pageSize = 12;
 
-    let showPage = (page) => {
-        //Hide alle video thumbnails
-        $(".gegevensbutton").hide();
+        let showPage = (page) => {
+            //Hide alle video thumbnails
+            $(".gegevensbutton").hide();
 
-        //Loop die ervoor zorgt dat als je op pagina klikt de juiste pagina tevoorschijn komt
-        $(".gegevensbutton").each(function (n) {
+            //Loop die ervoor zorgt dat als je op pagina klikt de juiste pagina tevoorschijn komt
+            $(".gegevensbutton").each(function (n) {
 
-            if (n >= pageSize * (page - 1) && n < pageSize * page)
-                $(this).show();
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+        }
+
+        //Toon de eerste pagina bij het starten van de website  
+        showPage(1);
+
+        //Wanneer er op een pagina wordt gekikt wordt de pagina die aangeklikt is getoont met een andere design
+        $("#pages .pages_1").click(function () {
+            $("#pages .pages_1").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()));
         });
-    }
-
-    //Toon de eerste pagina bij het starten van de website  
-    showPage(1);
-
-    //Wanneer er op een pagina wordt gekikt wordt de pagina die aangeklikt is getoont met een andere design
-    $("#pages .pages_1").click(function () {
-        $("#pages .pages_1").removeClass("current");
-        $(this).addClass("current");
-        showPage(parseInt($(this).text()));
     });
+
 
     //Hide de meldingen bij het form
     $('.error-message-2,.empty-state-2').hide();
