@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    
     //Get de category van de video's van de json file 
     $.getJSON("entries.json", function (data) {
 
@@ -18,23 +18,17 @@ $(document).ready(function () {
         /*Er verschijnen 2 buttons in de class doelgroep, waardoor de gebruiker kan kiezen welke doelgroep hij wil bekijken.
         Het aantal familie/ volwassenen categorie wordt achteraan de button bijgezet,zodat de gebruiker weet hoeveel video's er zijn
         van een doelgroep */
-        $('.doelgroep').append("<button class = 'volwassenenbutton'>" + "volwassenen (" + volwassenen + ")" +
-            "</button><button class = 'familiebutton'>" + "familie (" + number + ")" + "</button>");
+        $('.doelgroep').append("<button class='doelgroepbutton' id = 'volwassenenbutton' data-filter='volwassenen'>" + "volwassenen (" + volwassenen + ")" +
+            "</button><button  class='doelgroepbutton' id = 'familiebutton' data-filter='familie'>" + "familie (" + number + ")" + "</button>");
         /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
-        $('.volwassenenbutton').on('click', function () {
+        $('#volwassenenbutton').on('click', function () {
             $(this).toggleClass('genrebutton-active');
-
-            //Wanneer er op een doelgroep wordt geklikt worden de video's met deze doelgroep getoont
-             if ('.gegevensbutton'.data.items[j].category == "volwassenen") {
-                $('.gegevensbutton').hide();
-                $('.gegevens').append(this);
-            }  
         });
 
         /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
-        $('.familiebutton').on('click', function () {
+        $('#familiebutton').on('click', function () {
             $(this).toggleClass('genrebutton-active');
         });
     });
@@ -96,7 +90,7 @@ $(document).ready(function () {
         $('.filtersWissen').hide();
 
         //Wanneer er op een doelgroepbutton of genrebutton wordt geklikt komt een knop te voorschijn met filters wissen
-        $('.genrebutton, .volwassenenbutton, .familiebutton').on('click', function () {
+        $('.genrebutton, #volwassenenbutton, #familiebutton').on('click', function () {
             $('.filtersWissen').show();
         });
 
@@ -116,7 +110,7 @@ $(document).ready(function () {
             console.log(data);
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class='gegevensbutton' type='button' data-category='${data.items[i]["genre-v2"]}'> <img src="${data.items[i].thumbnail.url}"
+            $('.gegevens').append(`<button class='gegevensbutton' type='button' data-category='${data.items[i]["genre-v2"]}' data-doelgroep='${data.items[i].category}'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
@@ -128,13 +122,13 @@ $(document).ready(function () {
 
              if (dansgenre.val() == 'dans') {
                  console.log($('.gegevensbutton').eq(this));
-                 $('.gegevensbutton').val(this).hide(); 
-             } else if (dansgenre.val() == 'concert') {
+             } else if (dansgenre.val() == 'concert') {  
                  console.log('concert');
              } else if (dansgenre.val() == 'theater') {
-                 console.log('theater');
+                 console.log('theater'); 
              } else if (dansgenre.val() == 'multidisciplinair') {
                  console.log('multidisciplinair');
+                 $('.gegevensbutton').val(this).hide(); 
              } else if (dansgenre.val() == 'literatuur') {
                  console.log('literatuur');
              } else if (dansgenre.val() == 'comedy') {
@@ -200,8 +194,26 @@ $(document).ready(function () {
                 $(this).show();
             });
         });
-    });
 
+        //Doelgroep van de buttons wordt in variabelen gestoken
+        let filtersDoelgroep = $('.doelgroepbutton[data-filter]');
+        let doelgroepGegevens = $('.gegevensbutton[data-doelgroep]');
+
+        //Wanneer er op genrebutton wordt geklikt
+        filtersDoelgroep.on('click', function (e) {
+            //Refresh de pagina niet
+            e.preventDefault();
+            //Toont welke genrebutton aangeklikt is
+            let isClicked = $(this);
+            //Toont welk genre de button waarop geklikt is heeft
+            let filter = isClicked.attr('data-filter');
+
+            doelgroepGegevens.filter('[data-doelgroep="' + filter + '"]').each(function () {
+                $(this).show();
+            });
+        });
+    });
+ 
     //Pagination
 
     //12 video's per pagina tonen

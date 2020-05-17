@@ -6,7 +6,13 @@ Aanpak
 1. De pagina goed inspecteren en kijken wat er al werkt 
 2. Design van de pagina maken
 3. Beginnen met de jquery code
+    3.1 Gegevens weergeven
+    3.2 Categorien en genres toepassen
+    3.3 Extra gegevens wanneer op video geklikt tonen
+    3.4 Formulier laten werken
+    3.5 Searchbar laten werken
 4. Index.js file aanpassen, omdat ik steeds foutmeldingen krijg als ik het op de port wil laten draaien
+
 
 Mijn doel is om de gehele app na te maken (met alle functionaliteiten) en zo weinig mogelijk verschil qua uitzicht.
 
