@@ -26,10 +26,10 @@ $(document).ready(function () {
             $(this).toggleClass('genrebutton-active');
 
             //Wanneer er op een doelgroep wordt geklikt worden de video's met deze doelgroep getoont
-            /* if ('.gegevensbutton'.data.items[j].category == "volwassenen") {
+             if ('.gegevensbutton'.data.items[j].category == "volwassenen") {
                 $('.gegevensbutton').hide();
                 $('.gegevens').append(this);
-            } */
+            }  
         });
 
         /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
@@ -80,12 +80,12 @@ $(document).ready(function () {
         }
 
         //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
-        $('.genre').append("<button id ='dansId' class = 'genrebutton'>" + "dans (" + dans + ")" +
-            "</button><button class = 'genrebutton'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton'>" + "theater (" + theater + ")" +
-            "</button><button class = 'genrebutton'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton'>" + "concert (" + concert + ")" +
-            "</button><button class = 'genrebutton'>" + "multidiciplinair (" + multidiciplinair + ")" + "</button><button class = 'genrebutton'>" + "muziektheater (" + muziektheater + ")" +
-            "</button><button class = 'genrebutton'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton'>" + "circus (" + circus + ")" +
-            "</button><button class = 'genrebutton'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button>");
+        $('.genre').append("<button id ='dansId' class = 'genrebutton'  data-filter='dans'>" + "dans (" + dans + ")" +
+            "</button><button class = 'genrebutton'  data-filter='comedy'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton' data-filter='theater'>" + "theater (" + theater + ")" +
+            "</button><button class = 'genrebutton' data-filter='literatuur'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton' data-filter='concert'>" + "concert (" + concert + ")" +
+            "</button><button class = 'genrebutton' data-filter='multidiciplinair'>" + "multidiciplinair (" + multidiciplinair + ")" + "</button><button class = 'genrebutton' data-filter='muziektheater'>" + "muziektheater (" + muziektheater + ")" +
+            "</button><button class = 'genrebutton' data-filter='figurentheater'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton' data-filter='circus'>" + "circus (" + circus + ")" +
+            "</button><button class = 'genrebutton' data-filter='opera'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button>");
 
         /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
         hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
@@ -116,38 +116,38 @@ $(document).ready(function () {
             console.log(data);
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
-            $('.gegevens').append(`<button class='gegevensbutton' type='button'> <img src="${data.items[i].thumbnail.url}"
+            $('.gegevens').append(`<button class='gegevensbutton' type='button' data-category='${data.items[i]["genre-v2"]}'> <img src="${data.items[i].thumbnail.url}"
             class='thumbnail'/> <p id="genress"> ${data.items[i]["genre-v2"]}</p> <h3> ${data.items[i].name} </h3> <p> ${data.items[i].excerpt} </p> <p class="duur"> 
             ${data.items[i]["video-length"]}</p></button>`);
 
-            //In een variabele de json call genre plaatsen
-            let genredata = data.items[i]["genre-v2"];
+            //In een variabele de json call genre plaatsen 
+             let genredata = data.items[i]["genre-v2"];
 
-            //Gegevensbutton zijn value opslaan als het genre
-            let dansgenre = $(".gegevensbutton").val(genredata);
+             //Gegevensbutton zijn value opslaan als het genre
+             let dansgenre = $(".gegevensbutton").val(genredata);
 
-            if (dansgenre.val() == 'dans') {
-                console.log($('.gegevensbutton').eq(this));
-                $('.gegevensbutton').val(this).hide();
-            } else if (dansgenre.val() == 'concert') {
-                console.log('concert');
-            } else if (dansgenre.val() == 'theater') {
-                console.log('theater');
-            } else if (dansgenre.val() == 'multidisciplinair') {
-                console.log('multidisciplinair');
-            } else if (dansgenre.val() == 'literatuur') {
-                console.log('literatuur');
-            } else if (dansgenre.val() == 'comedy') {
-                console.log('comedy');
-            } else if (dansgenre.val() == 'muziektheater') {
-                console.log('muziektheater');
-            } else if (dansgenre.val() == 'figurentheater') {
-                console.log('figurentheater');
-            } else if (dansgenre.val() == 'circus') {
-                console.log('circus');
-            } else if (dansgenre.val() == 'opera') {
-                console.log('opera');
-            }
+             if (dansgenre.val() == 'dans') {
+                 console.log($('.gegevensbutton').eq(this));
+                 $('.gegevensbutton').val(this).hide(); 
+             } else if (dansgenre.val() == 'concert') {
+                 console.log('concert');
+             } else if (dansgenre.val() == 'theater') {
+                 console.log('theater');
+             } else if (dansgenre.val() == 'multidisciplinair') {
+                 console.log('multidisciplinair');
+             } else if (dansgenre.val() == 'literatuur') {
+                 console.log('literatuur');
+             } else if (dansgenre.val() == 'comedy') {
+                 console.log('comedy');
+             } else if (dansgenre.val() == 'muziektheater') {
+                 console.log('muziektheater');
+             } else if (dansgenre.val() == 'figurentheater') {
+                 console.log('figurentheater');
+             } else if (dansgenre.val() == 'circus') {
+                 console.log('circus');
+             } else if (dansgenre.val() == 'opera') {
+                 console.log('opera');
+             } 
         }
 
         $('.gegevensbutton').click(function (e) {
@@ -170,14 +170,36 @@ $(document).ready(function () {
               ${data.items[videoIndex]["video-notes"]}</p></div><div class='list'><h5>${data.items[videoIndex]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
         });
+        //Wanneer er iets in de inputfield wordt ingegeven
         $('.inputfield').on('keyup', function () {
-            console.log($(this).val());
+            //De tekst die in de inputfield wordt ingegeven wordt in een variabele gestoken
             let value = $(this).val().toLowerCase();
-            $(".gegevensbutton").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            //Er wordt gekeken of er in de gegevensbutton deze letters/woorden voorkomen
+            $(".gegevensbutton").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
+            if(value === ''){
+                $('.gegevensbutton').show();
+            }
         });
 
+        //Genre van de buttons wordt in variabelen gestoken
+        let filters = $('.genrebutton[data-filter]');
+        let boxes = $('.gegevensbutton[data-category]');
+
+        //Wanneer er op genrebutton wordt geklikt
+        filters.on('click', function (e) {
+            //Refresh de pagina niet
+            e.preventDefault();
+            //Toont welke genrebutton aangeklikt is
+            let clicked = $(this);
+            //Toont welk genre de button waarop geklikt is heeft
+            let filterColor = clicked.attr('data-filter');
+
+            boxes.filter('[data-category="' + filterColor + '"]').each(function () {
+                $(this).show();
+            });
+        });
     });
 
     //Pagination
@@ -198,7 +220,6 @@ $(document).ready(function () {
     }
 
     //Toon de eerste pagina bij het starten van de website  
-    //Deze lijn doet niets en ik snap niet hoe dit komt
     showPage(1);
 
     //Wanneer er op een pagina wordt gekikt wordt de pagina die aangeklikt is getoont met een andere design

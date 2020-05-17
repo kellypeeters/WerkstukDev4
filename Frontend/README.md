@@ -30,3 +30,6 @@ https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascrip
 
 Video afspelen
 https://developer.vimeo.com/api/oembed/videos
+
+Searchbar 
+https://www.w3schools.com/howto/howto_js_filter_lists.asp
