@@ -191,6 +191,7 @@ $(document).ready(function () {
             $(".gegevensbutton").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
+            //Als de inputfield leeg is toon alle video's
             if (value === '') {
                 $('.gegevensbutton').show();
             }
@@ -205,18 +206,27 @@ $(document).ready(function () {
             //Refresh de pagina niet
             e.preventDefault();
             /* Door de toggleclass functie wordt de class veranderd wanneer ik op de button klik
-        hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
+            hierdoor veranderd het design van de button zodat de gebruiker weet welke aangeklikt is */
             $(this).toggleClass('genrebutton-active');
             //Hide alle video's
             $('.gegevensbutton').hide();
             //Toont welke genrebutton aangeklikt is
             let clicked = $(this);
-            //Toont welk genre de button waarop geklikt is heeft
-            let filterGenre = clicked.attr('data-filter');
-            genreGegevens.filter('[data-category="' + filterGenre + '"]').each(function () {
-                $(this).show();
-                $(this).removeClass('gegevensbutton');
-            });
+
+            if (clicked.hasClass('genrebutton-active')) {
+                let filterGenre = clicked.attr('data-filter');
+                //Toont welk genre de button waarop geklikt is heeft
+                genreGegevens.filter('[data-category="' + filterGenre + '"]').each(function () {
+                    $(this).show();
+                    $(this).removeClass('gegevensbutton');
+                });
+            } else {
+                let filterGenre = clicked.attr('data-filter');
+                genreGegevens.filter('[data-category="' + filterGenre + '"]').each(function () {
+                    $(this).hide();
+                    $(this).addClass('gegevensbutton');
+                });
+            }
         });
 
         //Doelgroep van de buttons wordt in variabelen gestoken
@@ -242,7 +252,7 @@ $(document).ready(function () {
                 $('#normaal').show();
                 $('#familieGenre').hide();
                 $('#volwassenenGenre').hide();
-            }else{
+            } else {
                 $('#normaal').show();
                 $('#familieGenre').hide();
                 $('#volwassenenGenre').hide();
