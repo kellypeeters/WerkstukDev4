@@ -144,15 +144,13 @@ $(document).ready(function () {
         //Wanneer er op de filters wissen button wordt geklikt worden alle geselecteerde filters gedeselecteerd
         $('.filtersWissen').on('click', function () {
             $('button').removeClass('genrebutton-active');
+            $('.doelgroepbutton').removeClass('doelgroepbutton-active');
             $('.gegevensbutton').show();
             $('.filtersWissen').on('click', function () {
                 $('.filtersWissen').hide();
             });
         });
-    });
 
-    //Get de naam van de video's van de json file 
-    $.getJSON("entries.json", function (data) {
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
             console.log(data);
@@ -163,7 +161,7 @@ $(document).ready(function () {
             ${data.items[i]["video-length"]}</p></button>`);
         }
 
-        $('.gegevensbutton').click(function (e) {
+        $('.gegevensbutton').click(function (e) { 
             e.preventDefault();
 
             //Krijg de index van de video waarop geklikt is
@@ -183,6 +181,7 @@ $(document).ready(function () {
               ${data.items[videoIndex]["video-notes"]}</p></div><div class='list'><h5>${data.items[videoIndex]["key-takeaways"]}</h5>
               </div><div class='meervideos'><h2>Meer video's</h2></div>`);
         });
+
         //Wanneer er iets in de inputfield wordt ingegeven
         $('.inputfield').on('keyup', function () {
             //De tekst die in de inputfield wordt ingegeven wordt in een variabele gestoken
