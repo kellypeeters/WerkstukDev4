@@ -10,128 +10,109 @@ $(document).ready(function () {
             "</button><button  class='doelgroepbutton' id = 'familiebutton' data-filters='familie'>" + "familie" + "</button>");
 
         //Variabelen initialiseren zodat deze gebruikt kunnen worden in de loop
-        let dans = 0;
-        let dansVolwassenen = 0;
-        let dansFamilie = 0;
-        let comedy = 0;
-        let comedyVolwassenen = 0;
-        let comedyFamilie = 0;
-        let theater = 0;
-        let theaterVolwassenen = 0;
-        let theaterFamilie = 0;
-        let concert = 0;
-        let concertVolwassenen = 0;
-        let concertFamilie = 0;
-        let multidisciplinair = 0;
-        let multidisciplinairVolwassenen = 0;
-        let multidisciplinairFamilie = 0;
-        let literatuur = 0;
-        let literatuurVolwassenen = 0;
-        let literatuurFamilie = 0;
-        let muziektheater = 0;
-        let muziektheaterVolwassenen = 0;
-        let muziektheaterFamilie = 0;
-        let figurentheater = 0;
-        let figurentheaterVolwassenen = 0;
-        let figurentheaterFamilie = 0;
-        let circus = 0;
-        let circusVolwassenen = 0;
-        let circusFamilie = 0;
-        let opera = 0;
-        let operaVolwassenen = 0;
-        let operaFamilie = 0;
+        let dans = 0,
+            dansVolwassenen = 0,
+            dansFamilie = 0,
+            comedy = 0,
+            comedyVolwassenen = 0,
+            comedyFamilie = 0,
+            theater = 0,
+            theaterVolwassenen = 0,
+            theaterFamilie = 0,
+            concert = 0,
+            concertVolwassenen = 0,
+            concertFamilie = 0,
+            multidisciplinair = 0,
+            multidisciplinairVolwassenen = 0,
+            multidisciplinairFamilie = 0,
+            literatuur = 0,
+            literatuurVolwassenen = 0,
+            literatuurFamilie = 0,
+            muziektheater = 0,
+            muziektheaterVolwassenen = 0,
+            muziektheaterFamilie = 0,
+            figurentheater = 0,
+            figurentheaterVolwassenen = 0,
+            figurentheaterFamilie = 0,
+            circus = 0,
+            circusVolwassenen = 0,
+            circusFamilie = 0,
+            opera = 0,
+            operaVolwassenen = 0,
+            operaFamilie = 0;
 
         //Een loop zodat kan nagekeken worden hoeveel verschillende video's per genre er zijn
-        for (j = 0; j < data.items.length; j++) {
-            if (data.items[j]["genre-v2"] == "dans") {
-                dans++;
-            } else if (data.items[j]["genre-v2"] == "comedy") {
-                comedy++;
-            } else if (data.items[j]["genre-v2"] == "theater") {
-                theater++;
-            } else if (data.items[j]["genre-v2"] == "concert") {
-                concert++;
-            } else if (data.items[j]["genre-v2"] == "multidisciplinair") {
-                multidisciplinair++;
-            } else if (data.items[j]["genre-v2"] == "literatuur") {
-                literatuur++;
-            } else if (data.items[j]["genre-v2"] == "muziektheater") {
-                muziektheater++;
-            } else if (data.items[j]["genre-v2"] == "figurentheater") {
-                figurentheater++;
-            } else if (data.items[j]["genre-v2"] == "circus") {
-                circus++;
-            } else if (data.items[j]["genre-v2"] == "opera") {
-                opera++;
-            }
+        for (let j in data.items) {
+            data.items[j]["genre-v2"] == "dans" ? dans++ :
+                data.items[j]["genre-v2"] == "comedy" ? comedy++ :
+                data.items[j]["genre-v2"] == "theater" ? theater++ :
+                data.items[j]["genre-v2"] == "concert" ? concert++ :
+                data.items[j]["genre-v2"] == "multidisciplinair" ? multidisciplinair++ :
+                data.items[j]["genre-v2"] == "literatuur" ? literatuur++ :
+                data.items[j]["genre-v2"] == "muziektheater" ? muziektheater++ :
+                data.items[j]["genre-v2"] == "figurentheater" ? figurentheater++ :
+                data.items[j]["genre-v2"] == "circus" ? circus++ : opera++
         }
 
         //Er verschijnen 10 buttons waar alle genres in staan en het aantal video's dat bij die genres horen
-        $('.genre').append("<div id ='normaal'><button class = 'genrebutton'  data-filter='dans'>" + "dans (" + dans + ")" +
-            "</button><button class = 'genrebutton'  data-filter='comedy'>" + "comedy (" + comedy + ")" + "</button><button class = 'genrebutton' data-filter='theater'>" + "theater (" + theater + ")" +
-            "</button><button class = 'genrebutton' data-filter='literatuur'>" + "literatuur (" + literatuur + ")" + "</button><button class = 'genrebutton' data-filter='concert'>" + "concert (" + concert + ")" +
-            "</button><button class = 'genrebutton' data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinair + ")" + "</button><button class = 'genrebutton' data-filter='muziektheater'>" + "muziektheater (" + muziektheater + ")" +
-            "</button><button class = 'genrebutton' data-filter='figurentheater'>" + "figurentheater (" + figurentheater + ")" + "</button><button class = 'genrebutton' data-filter='circus'>" + "circus (" + circus + ")" +
-            "</button><button class = 'genrebutton' data-filter='opera'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
+        $('.genre').append("<div id ='normaal'><button  data-filter='dans'>" + "dans (" + dans + ")" +
+            "</button><button  data-filter='comedy'>" + "comedy (" + comedy + ")" + "</button><button data-filter='theater'>" + "theater (" + theater + ")" +
+            "</button><button  data-filter='literatuur'>" + "literatuur (" + literatuur + ")" + "</button><button data-filter='concert'>" + "concert (" + concert + ")" +
+            "</button><button  data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinair + ")" + "</button><button data-filter='muziektheater'>" + "muziektheater (" + muziektheater + ")" +
+            "</button><button  data-filter='figurentheater'>" + "figurentheater (" + figurentheater + ")" + "</button><button data-filter='circus'>" + "circus (" + circus + ")" +
+            "</button><button  data-filter='opera'>" + "opera (" + opera + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
 
-        //Loop om te kijken hoeveel genres er zijn al de category volwassenen is
-        for (j = 0; j < data.items.length; j++) {
-            if (data.items[j]["genre-v2"] == "dans" && data.items[j].category == "volwassenen") {
-                dansVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "dans" && data.items[j].category == "familie") {
-                dansFamilie++;
-            } else if (data.items[j]["genre-v2"] == "comedy" && data.items[j].category == "volwassenen") {
-                comedyVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "comedy" && data.items[j].category == "familie") {
-                comedyFamilie++;
-            } else if (data.items[j]["genre-v2"] == "theater" && data.items[j].category == "volwassenen") {
-                theaterVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "theater" && data.items[j].category == "familie") {
-                theaterFamilie++;
-            } else if (data.items[j]["genre-v2"] == "concert" && data.items[j].category == "volwassenen") {
-                concertVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "concert" && data.items[j].category == "familie") {
-                concertFamilie++;
-            } else if (data.items[j]["genre-v2"] == "multidisciplinair" && data.items[j].category == "volwassenen") {
-                multidisciplinairVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "multidisciplinair" && data.items[j].category == "familie") {
-                multidisciplinairFamilie++;
-            } else if (data.items[j]["genre-v2"] == "literatuur" && data.items[j].category == "volwassenen") {
-                literatuurVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "literatuur" && data.items[j].category == "familie") {
-                literatuurFamilie++;
-            } else if (data.items[j]["genre-v2"] == "muziektheater" && data.items[j].category == "volwassenen") {
-                muziektheaterVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "muziektheater" && data.items[j].category == "familie") {
-                muziektheaterFamilie++;
-            } else if (data.items[j]["genre-v2"] == "figurentheater" && data.items[j].category == "volwassenen") {
-                figurentheaterVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "figurentheater" && data.items[j].category == "familie") {
-                figurentheaterFamilie++;
-            } else if (data.items[j]["genre-v2"] == "circus" && data.items[j].category == "volwassenen") {
-                circusVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "circus" && data.items[j].category == "familie") {
-                circusFamilie++;
-            } else if (data.items[j]["genre-v2"] == "opera" && data.items[j].category == "volwassenen") {
-                operaVolwassenen++;
-            } else if (data.items[j]["genre-v2"] == "opera" && data.items[j].category == "familie") {
-                operaFamilie++;
-            }
+
+        for (let j in data.items) {
+            data.items[j]["genre-v2"] == "dans" && data.items[j].category == "volwassenen" ? dansVolwassenen++ :
+                data.items[j]["genre-v2"] == "dans" && data.items[j].category == "familie" ? dansFamilie++ :
+
+                data.items[j]["genre-v2"] == "comedy" && data.items[j].category == "volwassenen" ? comedyVolwassenen++ :
+                data.items[j]["genre-v2"] == "comedy" && data.items[j].category == "familie" ? comedyFamilie++ :
+
+                data.items[j]["genre-v2"] == "theater" && data.items[j].category == "volwassenen" ? theaterVolwassenen++ :
+                data.items[j]["genre-v2"] == "theater" && data.items[j].category == "familie" ? theaterFamilie++ :
+
+                data.items[j]["genre-v2"] == "concert" && data.items[j].category == "volwassenen" ? concertVolwassenen++ :
+                data.items[j]["genre-v2"] == "concert" && data.items[j].category == "familie" ? concertFamilie++ :
+
+                data.items[j]["genre-v2"] == "multidisciplinair" && data.items[j].category == "volwassenen" ? multidisciplinairVolwassenen++ :
+                data.items[j]["genre-v2"] == "concert" && data.items[j].category == "familie" ? multidisciplinairFamilie++ :
+
+                data.items[j]["genre-v2"] == "literatuur" && data.items[j].category == "volwassenen" ? literatuurVolwassenen++ :
+                data.items[j]["genre-v2"] == "literatuur" && data.items[j].category == "familie" ? literatuurFamilie++ :
+
+                data.items[j]["genre-v2"] == "muziektheater" && data.items[j].category == "volwassenen" ? muziektheaterVolwassenen++ :
+                data.items[j]["genre-v2"] == "muziektheater" && data.items[j].category == "familie" ? muziektheaterFamilie++ :
+
+                data.items[j]["genre-v2"] == "figurentheater" && data.items[j].category == "volwassenen" ? figurentheaterVolwassenen++ :
+                data.items[j]["genre-v2"] == "figurentheater" && data.items[j].category == "familie" ? figurentheaterFamilie++ :
+
+                data.items[j]["genre-v2"] == "circus" && data.items[j].category == "volwassenen" ? circusVolwassenen++ :
+                data.items[j]["genre-v2"] == "circus" && data.items[j].category == "familie" ? circusFamilie++ :
+
+                data.items[j]["genre-v2"] == "opera" && data.items[j].category == "volwassenen" ? operaVolwassenen++ :
+                data.items[j]["genre-v2"] == "opera" && data.items[j].category == "volwassenen" ? operaFamilie++ : "no"
         }
 
-        $('.genre').append("<div id='volwassenenGenre'><button id ='dansId' class = 'genrebutton'  data-filter='dans'>" + "dans (" + dansVolwassenen + ")" +
-            "</button><button class = 'genrebutton'  data-filter='comedy'>" + "comedy (" + comedyVolwassenen + ")" + "</button><button class = 'genrebutton' data-filter='theater'>" + "theater (" + theaterVolwassenen + ")" +
-            "</button><button class = 'genrebutton' data-filter='literatuur'>" + "literatuur (" + literatuurVolwassenen + ")" + "</button><button class = 'genrebutton' data-filter='concert'>" + "concert (" + concertVolwassenen + ")" +
-            "</button><button class = 'genrebutton' data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinairVolwassenen + ")" + "</button><button class = 'genrebutton' data-filter='muziektheater'>" + "muziektheater (" + muziektheaterVolwassenen + ")" +
-            "</button><button class = 'genrebutton' data-filter='figurentheater'>" + "figurentheater (" + figurentheaterVolwassenen + ")" + "</button><button class = 'genrebutton' data-filter='circus'>" + "circus (" + circusVolwassenen + ")" +
-            "</button><button class = 'genrebutton' data-filter='opera'>" + "opera (" + operaVolwassenen + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
+        $('.genre').append("<div id='volwassenenGenre'><button id ='dansId'  data-filter='dans'>" + "dans (" + dansVolwassenen + ")" +
+            "</button><button  data-filter='comedy'>" + "comedy (" + comedyVolwassenen + ")" + "</button><button data-filter='theater'>" + "theater (" + theaterVolwassenen + ")" +
+            "</button><button  data-filter='literatuur'>" + "literatuur (" + literatuurVolwassenen + ")" + "</button><button data-filter='concert'>" + "concert (" + concertVolwassenen + ")" +
+            "</button><button  data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinairVolwassenen + ")" + "</button><button data-filter='muziektheater'>" + "muziektheater (" + muziektheaterVolwassenen + ")" +
+            "</button><button  data-filter='figurentheater'>" + "figurentheater (" + figurentheaterVolwassenen + ")" + "</button><button data-filter='circus'>" + "circus (" + circusVolwassenen + ")" +
+            "</button><button  data-filter='opera'>" + "opera (" + operaVolwassenen + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
 
-        $('.genre').append("<div id='familieGenre'><button id ='dansId' class = 'genrebutton'  data-filter='dans'>" + "dans (" + dansFamilie + ")" +
-            "</button><button class = 'genrebutton'  data-filter='comedy'>" + "comedy (" + comedyFamilie + ")" + "</button><button class = 'genrebutton' data-filter='theater'>" + "theater (" + theaterFamilie + ")" +
-            "</button><button class = 'genrebutton' data-filter='literatuur'>" + "literatuur (" + literatuurFamilie + ")" + "</button><button class = 'genrebutton' data-filter='concert'>" + "concert (" + concertFamilie + ")" +
-            "</button><button class = 'genrebutton' data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinairFamilie + ")" + "</button><button class = 'genrebutton' data-filter='muziektheater'>" + "muziektheater (" + muziektheaterFamilie + ")" +
-            "</button><button class = 'genrebutton' data-filter='figurentheater'>" + "figurentheater (" + figurentheaterFamilie + ")" + "</button><button class = 'genrebutton' data-filter='circus'>" + "circus (" + circusFamilie + ")" +
-            "</button><button class = 'genrebutton' data-filter='opera'>" + "opera (" + operaFamilie + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
+        $('.genre').append("<div id='familieGenre'><button id ='dansId'  data-filter='dans'>" + "dans (" + dansFamilie + ")" +
+            "</button><button  data-filter='comedy'>" + "comedy (" + comedyFamilie + ")" + "</button><button data-filter='theater'>" + "theater (" + theaterFamilie + ")" +
+            "</button><button  data-filter='literatuur'>" + "literatuur (" + literatuurFamilie + ")" + "</button><button data-filter='concert'>" + "concert (" + concertFamilie + ")" +
+            "</button><button  data-filter='multidisciplinair'>" + "multidisciplinair (" + multidisciplinairFamilie + ")" + "</button><button data-filter='muziektheater'>" + "muziektheater (" + muziektheaterFamilie + ")" +
+            "</button><button  data-filter='figurentheater'>" + "figurentheater (" + figurentheaterFamilie + ")" + "</button><button data-filter='circus'>" + "circus (" + circusFamilie + ")" +
+            "</button><button  data-filter='opera'>" + "opera (" + operaFamilie + ")" + "</button><button class='filtersWissen'> Filters wissen </button></div>");
+
+            //Geef elke button die een genre toont de class genrebutton
+            $(".genre button").each(function() {
+               $(this).addClass('genrebutton');
+              });
 
         //Hide de button om alle geselecteerde genres en doelgroepen te verwijderen
         $('.filtersWissen').hide();
@@ -153,7 +134,6 @@ $(document).ready(function () {
 
         //Een loop zodat dit voor elk element kan gedaan worden
         for (let i in data.items) {
-            console.log(data);
 
             //De belangrijkste gegevens wordt zichtbaar op de pagina
             $('.gegevens').append(`<button class='gegevensbutton' id='current' type='button' data-category='${data.items[i]["genre-v2"]}' data-doelgroep='${data.items[i].category}'> <img src="${data.items[i].thumbnail.url}"
@@ -161,7 +141,7 @@ $(document).ready(function () {
             ${data.items[i]["video-length"]}</p></button>`);
         }
 
-        $('.gegevensbutton').click(function (e) { 
+        $('.gegevensbutton').click(function (e) {
             e.preventDefault();
 
             //Krijg de index van de video waarop geklikt is
@@ -197,8 +177,8 @@ $(document).ready(function () {
         });
 
         //Genre van de buttons wordt in variabelen gestoken
-        let filters = $('.genrebutton[data-filter]');
-        let genreGegevens = $('.gegevensbutton[data-category]');
+        let filters = $('.genrebutton[data-filter]'),
+            genreGegevens = $('.gegevensbutton[data-category]');
 
         //Wanneer er op genrebutton wordt geklikt
         filters.on('click', function (e) {
@@ -239,8 +219,8 @@ $(document).ready(function () {
         });
 
         //Doelgroep van de buttons wordt in variabelen gestoken
-        let filtersDoelgroep = $('.doelgroepbutton[data-filters]');
-        let doelgroepGegevens = $('.gegevensbutton[data-doelgroep]');
+        let filtersDoelgroep = $('.doelgroepbutton[data-filters]'),
+            doelgroepGegevens = $('.gegevensbutton[data-doelgroep]');
 
         //Wanneer er op genrebutton wordt geklikt
         filtersDoelgroep.on('click', function (e) {
